@@ -1,0 +1,16 @@
+@-moz-document url-prefix("chrome:"),
+               url("about:blank"),
+               url("about:home"),
+               url("about:newtab"),
+               url("about:privatebrowsing")
+{
+	.info-border,
+	.personalizeButtonWrapper,
+	.search-inner-wrapper {
+		display: none !important;
+	}
+
+	.logo-and-wordmark {
+		height: 50vh;
+	}
+}

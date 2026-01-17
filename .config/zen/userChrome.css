@@ -1,0 +1,93 @@
+.tab-close-button,
+.tab-icon-overlay,
+.titlebar-buttonbox-container,
+.zen-workspace-close-unpinned-tabs-button,
+#home-button,
+#tabs-newtab-button,
+#zen-toggle-compact-mode {
+	display: none !important;
+}
+
+#reload-button {
+	visibility: hidden !important;
+}
+
+#urlbar[open] {
+	.urlbar-background {
+		box-shadow: none !important;
+		border-radius: 0 !important;
+	}
+
+	.urlbar-input-container {
+		padding-bottom: 8px !important;
+	}
+
+	#identity-box {
+		margin-left: 5px !important;
+		margin-right: 5px !important;
+	}
+}
+
+#urlbar:not([open]) {
+	.urlbar-background {
+		background: transparent !important;
+	}
+
+	#identity-box {
+		margin-left: 6px !important;
+		margin-right: 5px !important;
+	}
+
+	#zen-copy-url-button {
+		margin-left: 10px !important;
+		margin-right: 2px !important;
+	}
+}
+
+:root[zen-sidebar-expanded="true"] {
+	.zen-current-workspace-indicator-icon {
+		margin-left: 0.5px !important;
+	}
+}
+
+:root:not([zen-sidebar-expanded="true"]) {
+	--zen-toolbox-max-width: calc(36px + var(--zen-toolbox-padding) * 2) !important;
+	--tab-collapsed-background-width: 36px !important;
+	--tab-collapsed-width: calc(var(--tab-collapsed-background-width) + 2 * var(--tab-inner-inline-margin)) !important;
+
+	.zen-current-workspace-indicator {
+		margin-top: 5px !important;
+		margin-bottom: 4px !important;
+	}
+
+	#nav-bar-customization-target {
+		margin-left: 32px !important;
+	}
+
+	#PanelUI-button {
+		margin-right: 4px !important;
+	}
+}
+
+#tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer.deck-selected {
+	outline: var(--zen-colors-border) !important;
+}
+
+#zen-create-new-button {
+	order: -1 !important;
+}
+
+#downloads-button {
+	order: 1 !important;
+}
+
+#statuspanel {
+	margin: 6px !important;
+}
+
+#statuspanel-label {
+	padding: 2px 8px !important;
+	border-radius: calc(infinity * 1px) !important;
+	border: 2px solid var(--zen-colors-border) !important;
+	background: var(--zen-colors-tertiary) !important;
+}
