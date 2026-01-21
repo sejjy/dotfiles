@@ -57,11 +57,11 @@ alias c="clear"
 alias :q="exit"
 
 # file
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
-alias cx="chmod +x"
-alias mkdir="mkdir -p"
+alias cp="cp -vi"
+alias mv="mv -vi"
+alias rm="rm -vi"
+alias cx="chmod -v +x"
+alias mkdir="mkdir -vp"
 
 # list
 alias ls="ls --color=auto --group-directories-first"
