@@ -6,8 +6,12 @@
 	"contributes": {
 		"snippets": [
 			{
-				"language": "sh",
-				"path": "./languages/bash.json"
+				"language": "all",
+				"path": "./languages/global.json"
+			},
+			{
+				"language": "c",
+				"path": "./languages/c.json"
 			}
 		]
 	}

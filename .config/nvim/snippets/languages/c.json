@@ -1,0 +1,16 @@
+{
+	"test template": {
+		"prefix": "test",
+		"body": [
+			"#include <stdio.h>",
+			"",
+			"int main(void)",
+			"{",
+			"\t$0",
+			"",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "Test template"
+	}
+}
