@@ -10,6 +10,9 @@ configuration {
 /* window */
 
 window {
+	location:               south east;
+	x-offset:               -8px;
+	y-offset:               -8px;
 	width:                  375px;
 	height:                 138px;
 	border:                 4px;
