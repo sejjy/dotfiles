@@ -30,14 +30,14 @@ usage() {
 
 main() {
 	case $1 in
-		"a")
+		a)
 			pkill rofi ||
 			      rofi -show drun       \
 			           -show-icons      \
 			           -disable-history \
 			           -config "$HOME/.config/rofi/app-launcher.rasi"
 			;;
-		"m")
+		m)
 			pkill rofi ||
 			      rofi -modi emoji             \
 			           -show emoji             \
@@ -47,7 +47,7 @@ main() {
 			           -kb-secondary-copy ""   \
 			           -config "$HOME/.config/rofi/emoji-picker.rasi"
 			;;
-		"v")
+		v)
 			pkill rofi ||
 			cliphist list |
 			      rofi -dmenu             \
@@ -57,12 +57,12 @@ main() {
 			cliphist decode |
 			wl-copy
 			;;
-		"w")
+		w)
 			pkill rofi ||
 			      rofi -show window \
 			           -config "$HOME/.config/rofi/window-switcher.rasi"
 			;;
-		"x")
+		x)
 			pkill rofi ||
 			      rofi -show calc          \
 			           -modi calc          \
@@ -76,7 +76,10 @@ main() {
 			           -terse              \
 			           -config "$HOME/.config/rofi/calculator.rasi"
 			;;
-		*) usage >&2; return 1 ;;
+		*)
+			usage >&2
+			return 1
+			;;
 	esac
 }
 

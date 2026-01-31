@@ -23,16 +23,26 @@ usage() {
 }
 
 main() {
-	[[ ! -d $DIR ]] && mkdir -p "$DIR"
+	if [[ ! -d $DIR ]]; then
+		mkdir -p "$DIR"
+	fi
 
 	local name file
+
 	name="Screenshot_$(date +%Y%m%d_%H%M%S_%2N).png"
 	file="$DIR/$name"
 
 	case $1 in
-		"area") grimblast --freeze copysave "$1" "$file" ;;
-		"active" | "output" | "screen") grimblast copysave "$1" "$file" ;;
-		*) usage >&2; return 1 ;;
+		area)
+			grimblast --freeze copysave "$1" "$file"
+			;;
+		active | output | screen)
+			grimblast copysave "$1" "$file"
+			;;
+		*)
+			usage >&2
+			return 1
+			;;
 	esac
 
 	if [[ ! -s $file ]]; then

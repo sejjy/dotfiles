@@ -11,19 +11,20 @@ main() {
 	status=$(get-output "status")
 
 	case $status in
-		"Playing") icon="󰐊" ;;
-		"Paused") icon="󰏤" ;;
-		*) return 0 ;;
+		Playing) icon='󰐊' ;;
+		Paused)  icon='󰏤' ;;
+		*)       return 0 ;;
 	esac
 
 	local title artist track
+
 	title=$(get-output "title")
 	artist=$(get-output "artist")
 	track="$title — $artist"
 
 	if ((${#track} > MAXLEN)); then
 		track=${track:0:MAXLEN}
-		track+="…"
+		track+='…'
 	fi
 
 	printf "%s" "$icon $track"

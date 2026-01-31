@@ -1,3 +1,5 @@
+# shellcheck shell=zsh
+
 # Enable powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -35,8 +37,8 @@ ZLE_RPROMPT_INDENT=0
 autoload -Uz compinit
 compinit
 zstyle ":completion:*:descriptions" format "%B%F{blue}%d%f%b"
-zstyle ":completion:*" group-name ""
-zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}"
+zstyle ":completion:*" group-name ''
+zstyle ":completion:*" matcher-list '' "m:{a-zA-Z}={A-Za-z}"
 zstyle ":completion:*" menu select
 zstyle ":completion:*" rehash true
 
@@ -136,13 +138,8 @@ alias tk="tmux kill-session"
 alias tks="tmux kill-server"
 alias tc="tmux clearhist"
 
-# scripts
-alias clean="$HOME/.local/bin/cleanup.sh"
-alias nitch="$HOME/dev/github/random/nitch/nitch"
-alias server="$HOME/.local/bin/server.sh"
-
 # misc
-alias e="y"  # yazi
+alias e='y'  # yazi
 alias z="cd" # zoxide
 alias yt="yt-dlp"
 alias discord="discord --ozone-platform-hint=auto"
@@ -152,6 +149,7 @@ alias np="playerctl metadata -af '{{ title }} - {{ artist }}'"
 #	exports   #
 #-------------#
 
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export FZF_DEFAULT_OPTS="--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8,fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC,marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8,selected-bg:#45475A,border:#6C7086,label:#CDD6F4"
@@ -165,8 +163,8 @@ export FZF_DEFAULT_OPTS="--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38B
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 ZVM_CURSOR_STYLE_ENABLED=false
 ZVM_VI_SURROUND_BINDKEY="s-prefix"
-ZVM_VI_HIGHLIGHT_FOREGROUND=#cdd6f4
-ZVM_VI_HIGHLIGHT_BACKGROUND=#45475a
+ZVM_VI_HIGHLIGHT_FOREGROUND="#cdd6f4"
+ZVM_VI_HIGHLIGHT_BACKGROUND="#45475a"
 ZVM_LINE_INIT_MODE="$ZVM_MODE_INSERT"
 
 # Live suggestions
@@ -178,18 +176,20 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # https://github.com/romkatv/powerlevel10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit "$ZDOTDIR/.p10k.zsh".
-[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
+if [[ -f "$ZDOTDIR/.p10k.zsh" ]]; then
+	source "$ZDOTDIR/.p10k.zsh"
+fi
 
 # Prompt overrides
-typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=""
-typeset -g POWERLEVEL9K_LOCK_ICON=""
-typeset -g POWERLEVEL9K_HOME_ICON=""
-typeset -g POWERLEVEL9K_HOME_SUB_ICON=""
-typeset -g POWERLEVEL9K_FOLDER_ICON=""
+typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='󰣇'
+typeset -g POWERLEVEL9K_LOCK_ICON=''
+typeset -g POWERLEVEL9K_HOME_ICON=''
+typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
+typeset -g POWERLEVEL9K_FOLDER_ICON=''
 typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last
-typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION=""
+typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION=''
 typeset -g POWERLEVEL9K_VCS_BRANCH_ICON="󰘬 "
-typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION=">"
+typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='>'
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
 #----------------#
@@ -207,22 +207,22 @@ eval "$(zoxide init --cmd cd zsh)"
 # pacman -F "command not found" handler
 # https://wiki.archlinux.org/title/Zsh
 function command_not_found_handler() {
-	printf "zsh: Command not found: %s\n" "$1"
-	local entries=(${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"})
-	local purple="\e[1;35m"
-	local bright="\e[0;1m"
-	local green="\e[1;32m"
-	local reset="\e[0m"
-	if (( ${#entries[@]} )); then
-		printf "${bright}$1${reset} may be found in the following packages:\n"
-		local pkg
-		for entry in "${entries[@]}"; do
-			local fields=(${(0)entry})
-			if [[ "$pkg" != "${fields[2]}" ]]; then
-				printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+	printf "zsh: command not found: %s\n" "$1"
+	local files=(${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"})
+	local rst="\e[0m"
+	local bri="\e[0;1m"
+	local grn="\e[1;32m"
+	local pur="\e[1;35m"
+	if ((${#files[@]})); then
+		printf "%b%s%b may be found in the following packages:\n" "$bri" "$1" "$rst"
+		local flds pkg
+		for f in "${files[@]}"; do
+			flds=(${(0)f})
+			if [[ $pkg != "${flds[2]}" ]]; then
+				printf "%b%s/%b%s %b%s%b\n" "$pur" "${flds[1]}" "$bri" "${flds[2]}" "$grn" "${flds[3]}" "$rst"
 			fi
-			printf "\t/%s\n" "${fields[4]}"
-			pkg="${fields[2]}"
+			printf "\t/%s\n" "${flds[4]}"
+			pkg="${flds[2]}"
 		done
 	fi
 	return 127
@@ -233,8 +233,10 @@ function command_not_found_handler() {
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d "" cwd < "$tmp"
-	[[ -n "$cwd" ]] && [[ "$cwd" != "$PWD" ]] && builtin cd -- "$cwd"
+	IFS= read -rd '' cwd < "$tmp"
+	if [[ -n $cwd && $cwd != "$PWD" ]]; then
+		builtin cd -- "$cwd"
+	fi
 	rm -f -- "$tmp"
 }
 
