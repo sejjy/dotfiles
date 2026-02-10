@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 
 -- Cursor
 vim.opt.guicursor = ""
-vim.opt.cursorline = false
 vim.opt.scrolloff = 10
 
 -- Columns

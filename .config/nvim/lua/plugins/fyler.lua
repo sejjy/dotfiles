@@ -29,7 +29,7 @@ return {
 					},
 					win_opts = {
 						winhighlight = "Normal:NormalFloat",
-						cursorline = true,
+						cursorline = false,
 						number = true,
 						relativenumber = true,
 					},

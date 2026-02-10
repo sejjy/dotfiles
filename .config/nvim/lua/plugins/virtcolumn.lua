@@ -1,27 +1,27 @@
 return {
 	"marchyman/virt-column.nvim",
 
-	event = "BufReadPost",
-
 	config = function()
 		local function toggle_colorcolumn()
-			if vim.wo.colorcolumn == "" then
-				vim.wo.colorcolumn = "80"
-			else
-				vim.wo.colorcolumn = ""
-			end
+			vim.wo.colorcolumn = (vim.wo.colorcolumn == "" and "80") or ""
 		end
 
+		local colorcolumn_group = vim.api.nvim_create_augroup("ColorcolumnGroup", { clear = true })
+
 		vim.api.nvim_create_autocmd("InsertEnter", {
+			group = colorcolumn_group,
+			pattern = "*",
 			callback = function()
-				vim.w.saved_colorcolumn = vim.wo.colorcolumn
+				vim.w.column_number = vim.wo.colorcolumn
 				vim.wo.colorcolumn = ""
 			end,
 		})
 
 		vim.api.nvim_create_autocmd("InsertLeave", {
+			group = colorcolumn_group,
+			pattern = "*",
 			callback = function()
-				vim.wo.colorcolumn = vim.w.saved_colorcolumn or ""
+				vim.wo.colorcolumn = vim.w.column_number or ""
 			end,
 		})
 

@@ -10,9 +10,8 @@ return {
 			indent.enable(not indent.is_enabled())
 		end, { desc = "toggle [i]ndent guides" })
 
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
-		vim.api.nvim_set_hl(0, "BlinkIndentFocused", { default = true, fg = mocha.overlay2 })
-		vim.api.nvim_set_hl(0, "BlinkIndentFocusedUnderline", { default = true, sp = mocha.overlay2, underline = true })
+		vim.api.nvim_set_hl(0, "BlinkIndentFocused", { default = true, fg = "#808080" })
+		vim.api.nvim_set_hl(0, "BlinkIndentFocusedUnderline", { default = true, sp = "#808080", underline = true })
 
 		indent.setup({
 			static = {

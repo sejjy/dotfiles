@@ -14,13 +14,12 @@ return {
 			end
 		end
 
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
-
 		require("lualine").setup({
 			sections = {
 				lualine_a = {
 					{
 						"mode",
+						color = { gui = "bold" },
 						separator = { left = "", right = " " },
 						fmt = trunc(80, 1, 0, true),
 					},
@@ -30,7 +29,7 @@ return {
 					{
 						"branch",
 						icon = "󰘬",
-						color = { fg = mocha.text },
+						color = { fg = "#e6edf3", bg = "#161b22" },
 						padding = { right = 1 },
 						separator = { right = " " },
 					},
@@ -40,12 +39,13 @@ return {
 					{
 						"filetype",
 						icon_only = true,
-						color = { bg = mocha.mantle },
+						color = { bg = "NONE" },
 						padding = 0,
 						separator = "",
 					},
 					{
 						"filename",
+						color = { fg = "#e6edf3", bg = "NONE" },
 						padding = { right = 1 },
 						separator = ":",
 						fmt = trunc(50, 18, 0, false),
@@ -53,8 +53,8 @@ return {
 					{
 						"diff",
 						symbols = { added = "󰐗 ", removed = "󰍶 ", modified = "󰻂 " },
-						color = { bg = mocha.mantle },
-						diff_color = { modified = { fg = mocha.blue } },
+						color = { bg = "NONE" },
+						diff_color = { modified = { fg = "#58a6ff" } },
 						fmt = trunc(0, 0, 120, true),
 					},
 				},
@@ -63,14 +63,14 @@ return {
 					{
 						"diagnostics",
 						symbols = { error = "󰅙 ", warn = "󰀦 ", info = "󰋼 ", hint = "󰋗 " },
-						color = { bg = mocha.mantle },
+						color = { bg = "NONE" },
 						separator = ":",
 						fmt = trunc(0, 0, 120, true),
 					},
 					{
 						"lsp_status",
 						icon = "",
-						color = { bg = mocha.mantle },
+						color = { fg = "#e6edf3", bg = "NONE" },
 						symbols = { spinner = "", done = "", separator = ", " },
 						padding = { right = 1 },
 						fmt = trunc(160, 20, 80, false),
@@ -80,14 +80,18 @@ return {
 				lualine_y = {
 					{
 						"filesize",
-						color = { fg = mocha.text },
+						color = { fg = "#e6edf3", bg = "#161b22" },
 						separator = { left = "" },
 						fmt = trunc(0, 0, 80, true),
 					},
 				},
 
 				lualine_z = {
-					{ "location", separator = { left = "", right = "" } },
+					{
+						"location",
+						color = { gui = "bold" },
+						separator = { left = "", right = "" },
+					},
 				},
 			},
 
@@ -111,6 +115,6 @@ return {
 		-- remove outer separator bg color
 		vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
-		vim.api.nvim_set_hl(0, "lualine_c_normal", { bg = mocha.mantle })
+		vim.api.nvim_set_hl(0, "lualine_c_normal", { bg = "NONE" })
 	end,
 }

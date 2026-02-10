@@ -40,17 +40,12 @@ return {
 			shfmt = {
 				-- Respect .editorconfig if present
 				args = function(_, ctx)
-					local has_ec = vim.fs.find(".editorconfig", { path = vim.fn.getcwd() })
-					if #has_ec > 0 then
-						return { "-filename", ctx.filename }
-					else
-						return {
-							"--case-indent",
-							"--space-redirects",
-							"-filename",
-							ctx.filename,
-						}
+					local args = { "-filename", ctx.filename }
+					local config = vim.fs.find(".editorconfig", { path = vim.fn.getcwd(), upward = true, limit = 1 })
+					if not next(config) then
+						vim.list_extend(args, { "--case-indent", "--space-redirects" })
 					end
+					return args
 				end,
 			},
 		},

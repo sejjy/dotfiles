@@ -1,22 +1,3 @@
--- Highlight cursorline
---[[
-local cursor_group = vim.api.nvim_create_augroup("CursorGroup", { clear = true })
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-	group = cursor_group,
-	callback = function()
-		vim.opt.cursorline = true
-	end,
-})
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-	group = cursor_group,
-	callback = function()
-		vim.opt.cursorline = false
-	end,
-})
---]]
-
 -- Save folds
 local fold_group = vim.api.nvim_create_augroup("FoldGroup", { clear = true })
 
@@ -128,5 +109,15 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function(ctx)
 		local win = vim.fn.win_findbuf(ctx.buf)[1]
 		vim.api.nvim_win_set_config(win, { border = "none" })
+	end,
+})
+
+local mason_group = vim.api.nvim_create_augroup("MasonGroup", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = mason_group,
+	pattern = "mason",
+	callback = function()
+		vim.wo.cursorline = false
 	end,
 })
