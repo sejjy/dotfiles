@@ -98,7 +98,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gr="git reset"
-alias gcf="git clean -d --force"
+alias gc="git clean -d"
 alias grs="git restore --staged"
 alias gb="git branch"
 alias gco="git checkout"
@@ -110,7 +110,7 @@ alias gst="git stash"
 alias gstp="git stash pop"
 alias gl="git log"
 alias glo="git log --graph --oneline"
-alias gd="git diff | bat"
+alias gd='f() { git diff "$@" | bat }; f'
 
 # vim
 alias v="vim"
