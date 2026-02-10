@@ -13,27 +13,26 @@
 # Date:    August 16, 2025
 # License: MIT
 
-TIMEOUT=10
-HELPERS=(aura paru pikaur trizen yay)
+FG_GREEN="\e[32m"
+FG_BLUE="\e[34m"
+FG_RESET="\e[39m"
 
 FAILURE=false
 PAC_UPD=0
 AUR_UPD=0
 
-cprintf() {
-	case $1 in
-		g) printf "\e[32m" ;;
-		b) printf "\e[34m" ;;
-	esac
-	printf "%b\n" "${@:2}"
-	printf "\e[39m"
+TIMEOUT=10
+HELPERS=(aura paru pikaur trizen yay)
+
+printf() {
+	command printf "$@" >&2
 }
 
 get_helper() {
-	local h
-	for h in "${HELPERS[@]}"; do
-		if command -v "$h" > /dev/null; then
-			HELPER=$h
+	local helper
+	for helper in "${HELPERS[@]}"; do
+		if command -v "$helper" > /dev/null; then
+			HELPER=$helper
 			break
 		fi
 	done
@@ -50,7 +49,7 @@ check_updates() {
 		return 1
 	fi
 
-	PAC_UPD=$(grep -cve "^\s*$" <<< "$pac_output")
+	PAC_UPD=$(grep -c . <<< "$pac_output")
 
 	if [[ -z $HELPER ]]; then
 		return 0
@@ -66,27 +65,27 @@ check_updates() {
 		return 1
 	fi
 
-	AUR_UPD=$(grep -cve "^\s*$" <<< "$aur_output")
+	AUR_UPD=$(grep -c . <<< "$aur_output")
 }
 
 update_packages() {
-	cprintf b "Updating pacman packages..."
+	printf "%bUpdating pacman packages...%b\n" "$FG_BLUE" "$FG_RESET"
 	sudo pacman -Syu
 
 	if [[ -n $HELPER ]]; then
-		cprintf b "\nUpdating AUR packages..."
+		printf "\n%bUpdating AUR packages...%b\n" "$FG_BLUE" "$FG_RESET"
 		command "$HELPER" -Syu
 	fi
 
 	notify-send "Update Complete" -i "package-install"
 
-	cprintf g "\nUpdate Complete!"
+	printf "\n%bUpdate Complete!%b\n" "$FG_GREEN" "$FG_RESET"
 	read -rsn 1 -p "Press any key to exit..."
 }
 
 display_module() {
 	if $FAILURE; then
-		echo "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }"
+		command printf "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }\n"
 		exit 0
 	fi
 
@@ -97,9 +96,9 @@ display_module() {
 	fi
 
 	if ((PAC_UPD + AUR_UPD == 0)); then
-		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
+		command printf "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }\n"
 	else
-		echo "{ \"text\": \"󰄠\", \"tooltip\": \"$tooltip\" }"
+		command printf "{ \"text\": \"󰄠\", \"tooltip\": \"%s\" }\n" "$tooltip"
 	fi
 }
 
@@ -107,15 +106,16 @@ main() {
 	get_helper
 
 	case $1 in
-		"module")
+		module)
 			check_updates
 			display_module
 			;;
 		*)
-			cprintf b "Checking for updates..."
+			printf "%bChecking for updates...%b\n" "$FG_BLUE" "$FG_RESET"
 			check_updates
 			update_packages
 
+			# update the module
 			pkill -RTMIN+1 waybar
 			;;
 	esac

@@ -1,11 +1,10 @@
-/*------------------
-    window count
-------------------*/
+/*---------------
+    indicator
+---------------*/
 
-#windowcount {
+#keyboard-state label,
+#language {
 	margin-right: 12px;
-}
-#windowcount label {
 	color: @hover-fg;
 }
 

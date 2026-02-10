@@ -11,12 +11,13 @@
 # Date:    August 19, 2025
 # License: MIT
 
+FG_RED="\e[31m"
+FG_RESET="\e[39m"
+
 TIMEOUT=10
 
-cprintf() {
-	printf "\e[31m"
-	printf "%b\n" "$@"
-	printf "\e[39m"
+printf() {
+	command printf "$@" >&2
 }
 
 power_on() {
@@ -31,9 +32,9 @@ power_on() {
 			rfkill unblock bluetooth
 
 			local new_state
-			local i=1
 
-			for (( ; i <= TIMEOUT; i++)); do
+			local i=1
+			for ((; i <= TIMEOUT; i++)); do
 				printf "\rUnblocking Bluetooth... (%d/%d)" $i $TIMEOUT
 
 				new_state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
@@ -62,14 +63,16 @@ get_devices() {
 	bluetoothctl -t $TIMEOUT scan on > /dev/null &
 
 	local num
-	local i=1
 
-	for (( ; i <= TIMEOUT; i++)); do
-		printf  "\rScanning for devices... (%d/%d)" $i $TIMEOUT
-		cprintf "\nPress [q] to stop"
+	local i=1
+	for ((; i <= TIMEOUT; i++)); do
+		printf "\rScanning for devices... (%d/%d)" $i $TIMEOUT
+		printf "\n%bPress [q] to stop%b\n" "$FG_RED" "$FG_RESET"
 
 		num=$(bluetoothctl devices | grep -c "Device")
 		printf "\nDevices: %d" "$num"
+
+		# move cursor 3 lines up
 		printf "\e[3F"
 
 		read -rsn 1 -t 1
@@ -78,7 +81,7 @@ get_devices() {
 		fi
 	done
 
-	cprintf "\nScanning stopped.\n"
+	printf "\n%bScanning stopped.%b\n\n" "$FG_RED" "$FG_RESET"
 
 	LIST=$(bluetoothctl devices | sed "s/^Device //")
 	if [[ -z $LIST ]]; then
@@ -94,6 +97,7 @@ select_device() {
 	local options=(
 		"--border=sharp"
 		"--border-label= Bluetooth Devices "
+		"--cycle"
 		"--ghost=Search"
 		"--header=$header"
 		"--height=~100%"
@@ -142,13 +146,13 @@ pair_and_connect() {
 }
 
 main() {
-	# hide cursor
+	# make cursor invisible
 	printf "\e[?25l"
 
 	power_on
 	get_devices
 
-	# unhide cursor
+	# make cursor visible
 	printf "\e[?25h"
 
 	select_device
