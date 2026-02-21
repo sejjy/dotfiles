@@ -85,11 +85,11 @@ alias prm="sudo pacman -Rns"
 alias pls="pacman -Q"
 
 # AUR
-alias yup="yay -Syu"
-alias yfd="yay -Ss"
-alias ydl="yay -S"
-alias yrm="yay -Rns"
-alias yls="yay -Qm"
+alias aup="paru -Syu"
+alias afd="paru -Ss"
+alias adl="paru -S"
+alias arm="paru -Rns"
+alias als="paru -Qm"
 
 # git
 alias gcl="git clone"
