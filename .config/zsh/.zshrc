@@ -138,8 +138,7 @@ alias tks="tmux kill-server"
 alias tc="tmux clearhist"
 
 # misc
-alias e='y'  # yazi
-alias z="cd" # zoxide
+alias z="cd"
 alias yt="yt-dlp"
 alias discord="discord --ozone-platform-hint=auto"
 alias np="playerctl metadata -af '{{ title }} - {{ artist }}'"
@@ -208,42 +207,46 @@ eval "$(zoxide init --cmd cd zsh)"
 function command_not_found_handler() {
 	printf "zsh: command not found: %s\n" "$1"
 	local files=(${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"})
-	local rst="\e[0m"
-	local bri="\e[0;1m"
-	local grn="\e[1;32m"
-	local pur="\e[1;35m"
+	local md_reset="\e[0m"
+	local md_bright="\e[0;1m"
+	local fg_green="\e[1;32m"
+	local fg_purple="\e[1;35m"
 	if ((${#files[@]})); then
-		printf "%b%s%b may be found in the following packages:\n" "$bri" "$1" "$rst"
-		local flds pkg
+		printf "%b%s%b may be found in the following packages:\n" "$md_bright" "$1" "$md_reset"
+		local f fields package
 		for f in "${files[@]}"; do
-			flds=(${(0)f})
-			if [[ $pkg != "${flds[2]}" ]]; then
-				printf "%b%s/%b%s %b%s%b\n" "$pur" "${flds[1]}" "$bri" "${flds[2]}" "$grn" "${flds[3]}" "$rst"
+			fields=(${(0)f})
+			if [[ $package != "${fields[2]}" ]]; then
+				printf "%b%s/%b%s %b%s%b\n" "$fg_purple" "${fields[1]}" "$md_bright" "${fields[2]}" "$fg_green" "${fields[3]}" "$md_reset"
 			fi
-			printf "\t/%s\n" "${flds[4]}"
-			pkg="${flds[2]}"
+			printf "\t/%s\n" "${fields[4]}"
+			package="${fields[2]}"
 		done
 	fi
 	return 127
 }
 
-# yazi shell wrapper
-# https://yazi-rs.github.io/docs/quick-start
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -rd '' cwd < "$tmp"
-	if [[ -n $cwd && $cwd != "$PWD" ]]; then
-		builtin cd -- "$cwd"
+# ranger
+# https://github.com/ranger/ranger
+function e() {
+	local temp
+	temp=$(mktemp)
+	ranger --choosedir="$temp" "$@"
+	if [[ -f $temp ]]; then
+		local dir
+		dir=$(< "$temp")
+		rm -f "$temp"
+		if [[ -d $dir && $dir != "$PWD" ]]; then
+			cd "$dir" || return 1
+		fi
 	fi
-	rm -f -- "$tmp"
 }
 
-# fff (Fucking Fast File-Manager)
+# fff
 # https://github.com/dylanaraps/fff
 function f() {
 	fff "$@"
-	cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+	cd "$(< "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return 1
 }
 
 # bash `help` builtin
