@@ -141,7 +141,6 @@ alias tc="tmux clearhist"
 alias z="cd"
 alias yt="yt-dlp"
 alias discord="discord --ozone-platform-hint=auto"
-alias np="playerctl metadata -af '{{ title }} - {{ artist }}'"
 
 #-------------#
 #	exports   #
