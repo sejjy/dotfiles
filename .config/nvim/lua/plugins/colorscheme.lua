@@ -28,13 +28,13 @@ return {
 		vim.api.nvim_set_hl(0, "FloatBorder", { bg = float.bg, fg = "#484f58" })
 		vim.api.nvim_set_hl(0, "FloatTitle", { bg = float.bg })
 
-		-- bash
+		-- Bash
 		vim.api.nvim_set_hl(0, "bashStatement", { fg = "#e6edf3" })
 
-		-- c
+		-- C
 		vim.api.nvim_set_hl(0, "@constant.macro", { fg = "#e6edf3" })
 
-		-- sh
+		-- Sh
 		vim.api.nvim_set_hl(0, "shDerefSimple", { fg = "#e6edf3" })
 		vim.api.nvim_set_hl(0, "shDerefVar", { fg = "#e6edf3" })
 		vim.api.nvim_set_hl(0, "shHereDoc02", { fg = "#a5d6ff" })

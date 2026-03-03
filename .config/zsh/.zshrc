@@ -8,7 +8,7 @@ if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 fi
 
 #-------------#
-#	options   #
+#   Options   #
 #-------------#
 
 setopt AUTO_CD
@@ -22,7 +22,7 @@ setopt HASH_LIST_ALL
 setopt CORRECT
 
 #----------------#
-#	parameters   #
+#   Parameters   #
 #----------------#
 
 HISTFILE="$ZDOTDIR/.zsh_history"
@@ -31,7 +31,7 @@ SAVEHIST=5000
 ZLE_RPROMPT_INDENT=0
 
 #----------------#
-#	completion   #
+#   Completion   #
 #----------------#
 
 autoload -Uz compinit
@@ -43,41 +43,41 @@ zstyle ":completion:*" menu select
 zstyle ":completion:*" rehash true
 
 #-------------#
-#	keymaps   #
+#   Keymaps   #
 #-------------#
 
-bindkey -v # vi mode
+bindkey -v # Vi mode
 bindkey "^ " autosuggest-accept
 
 #-------------#
-#	aliases   #
+#   Aliases   #
 #-------------#
 
-# shell
+# Shell
 alias reload="exec zsh"
 alias c="clear"
 alias :q="exit"
 
-# file
+# File
 alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -vi"
 alias cx="chmod -v +x"
 alias mkdir="mkdir -vp"
 
-# list
+# List
 alias ls="ls --color=auto --group-directories-first"
 alias la="ls -A"
 alias ll="ls -alh"
 
-# find
+# Find
 alias find="fd"
 alias fd="fd --hidden --exclude timeshift"
 alias fdf="fd --type file"
 alias fdd="fd --type dir"
 # alias grep="rg"
 
-# pacman
+# Pacman
 alias pup="sudo pacman -Syu"
 alias pfd="pacman -Ss"
 alias pdl="sudo pacman -S"
@@ -91,7 +91,7 @@ alias adl="paru -S"
 alias arm="paru -Rns"
 alias als="paru -Qm"
 
-# git
+# Git
 alias gcl="git clone"
 alias gi="git init"
 alias ga="git add"
@@ -111,14 +111,14 @@ alias gl="git log"
 alias glo="git log --graph --oneline"
 alias gd='f() { git diff "$@" | bat }; f'
 
-# vim
+# Vim
 alias v="vim"
 alias n="nvim"
 alias nn="cd $XDG_CONFIG_HOME/nvim && nvim"
 alias nh="cd $XDG_CONFIG_HOME/hypr && nvim"
 alias nw="cd $XDG_CONFIG_HOME/waybar && nvim"
 
-# docker
+# Docker
 alias dr="docker run"
 alias dp="docker ps"
 alias dpa="docker ps --all"
@@ -128,7 +128,7 @@ alias drmi="docker rmi"
 alias ds="docker start"
 alias dst="docker stop"
 
-# tmux
+# Tmux
 alias t="tmux"
 alias tn="tmux new-session"
 alias ta="tmux attach-session"
@@ -137,13 +137,13 @@ alias tk="tmux kill-session"
 alias tks="tmux kill-server"
 alias tc="tmux clearhist"
 
-# misc
+# Misc
 alias z="cd"
 alias yt="yt-dlp"
 alias discord="discord --ozone-platform-hint=auto"
 
 #-------------#
-#	exports   #
+#   Exports   #
 #-------------#
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -152,7 +152,7 @@ export MANPAGER="nvim +Man!"
 export FZF_DEFAULT_OPTS="--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8,fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC,marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8,selected-bg:#45475A,border:#6C7086,label:#CDD6F4"
 
 #-------------#
-#	plugins   #
+#   Plugins   #
 #-------------#
 
 # Better vi mode
@@ -190,7 +190,7 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='>'
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
 #----------------#
-#	extensions   #
+#   Extensions   #
 #----------------#
 
 # Smarter cd
@@ -198,7 +198,7 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 eval "$(zoxide init --cmd cd zsh)"
 
 #---------------#
-#	functions   #
+#   Functions   #
 #---------------#
 
 # pacman -F "command not found" handler
@@ -225,7 +225,7 @@ function command_not_found_handler() {
 	return 127
 }
 
-# ranger
+# Ranger
 # https://github.com/ranger/ranger
 function e() {
 	local temp
@@ -248,7 +248,7 @@ function f() {
 	cd "$(< "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return 1
 }
 
-# bash `help` builtin
+# Bash `help` builtin
 function help() {
 	bash -c "help $1" bash "$1"
 }

@@ -1,4 +1,4 @@
-/* calculator */
+/* Calculator */
 
 @theme "~/.config/rofi/theme.rasi"
 
@@ -7,7 +7,7 @@ configuration {
 	calc-display-format:    "{name}";
 }
 
-/* window */
+/* Window */
 
 window {
 	location:               south east;
@@ -39,7 +39,7 @@ textbox-custom {
 	content:                "󰃬 Calculator";
 }
 
-/* output */
+/* Output */
 
 message {
 	border:                 2px 0 0;
@@ -60,7 +60,7 @@ textbox {
 	text-color:             @main-fg;
 }
 
-/* input */
+/* Input */
 
 inputbar {
 	margin:                 -40px 8px 8px;

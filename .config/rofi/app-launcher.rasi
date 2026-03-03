@@ -1,4 +1,4 @@
-/* app launcher */
+/* App launcher */
 
 @theme "~/.config/rofi/theme.rasi"
 
@@ -8,7 +8,7 @@ configuration {
 	drun-display-format:    "[<span weight='bold'>{name}</span>] [<span alpha='80%' weight='light'><i>({generic})</i></span>]";
 }
 
-/* window */
+/* Window */
 
 window {
 	width:                  375px;
@@ -37,7 +37,7 @@ textbox-custom {
 	content:                "󰕰 Apps";
 }
 
-/* list */
+/* List */
 
 listview {
 	border:                 2px 0 0;
@@ -78,7 +78,7 @@ element-text {
 	text-color:             inherit;
 }
 
-/* input */
+/* Input */
 
 inputbar {
 	margin:                 -40px 8px 8px;

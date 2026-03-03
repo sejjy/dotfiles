@@ -1,4 +1,4 @@
-/* catppuccin mocha */
+/* Catppuccin Mocha */
 
 @define-color rosewater     #f5e0dc;
 @define-color flamingo      #f2cdcd;
@@ -33,7 +33,7 @@
 	fg - foreground
 */
 
-/* main colors */
+/* Main colors */
 
 @define-color accent        @lavender;
 @define-color main-br       @subtext0;
@@ -43,7 +43,7 @@
 @define-color hover-fg      alpha(@main-fg, 0.75);
 @define-color outline       shade(@main-bg, 0.5);
 
-/* module colors */
+/* Module colors */
 
 @define-color workspaces    @mantle;
 @define-color temperature   @mantle;
@@ -56,7 +56,7 @@
 @define-color backlight     @base;
 @define-color battery       @surface0;
 
-/* state colors */
+/* State colors */
 
 @define-color warning       @yellow;
 @define-color critical      @red;

@@ -1,4 +1,4 @@
-/* window switcher */
+/* Window switcher */
 
 @theme "~/.config/rofi/theme.rasi"
 
@@ -7,7 +7,7 @@ configuration {
 	window-format:          "<span weight='bold'>{c:10}</span> <span alpha='80%' weight='light'><i>{t}</i></span>";
 }
 
-/* window */
+/* Window */
 
 window {
 	width:                  375px;
@@ -37,7 +37,7 @@ textbox-custom {
 	content:                "󰖯 Windows";
 }
 
-/* list */
+/* List */
 
 listview {
 	border:                 2px 0 0;

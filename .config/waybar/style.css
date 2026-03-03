@@ -1,7 +1,7 @@
 @import "theme.css";
 
 * {
-	/* ignore GTK theme */
+	/* Ignore GTK theme */
 	all: initial;
 	color: @main-fg;
 }
