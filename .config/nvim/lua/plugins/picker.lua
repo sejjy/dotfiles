@@ -60,7 +60,7 @@ return {
 		local picker = require("snacks").picker
 
 		local function sdesc(desc)
-			return { desc = "search " .. desc }
+			return { desc = "Search " .. desc }
 		end
 
 		vim.keymap.set("n", "<Leader><Leader>", picker.buffers, sdesc("open buffers"))

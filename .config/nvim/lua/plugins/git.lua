@@ -11,7 +11,7 @@ return {
 			end
 
 			local function tdesc(desc)
-				return { desc = "Git: toggle " .. desc, buffer = bufnr }
+				return { desc = "Git: Toggle " .. desc, buffer = bufnr }
 			end
 
 			-- Navigation
@@ -21,7 +21,7 @@ return {
 				else
 					gitsigns.nav_hunk("next")
 				end
-			end, hdesc("next change"))
+			end, hdesc("Next change"))
 
 			vim.keymap.set("n", "[c", function()
 				if vim.wo.diff then
@@ -29,7 +29,7 @@ return {
 				else
 					gitsigns.nav_hunk("prev")
 				end
-			end, hdesc("previous change"))
+			end, hdesc("Previous change"))
 
 			-- Actions
 			vim.keymap.set("n", "<Leader>gs", gitsigns.stage_hunk, hdesc("[s]tage"))

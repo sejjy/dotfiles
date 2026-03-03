@@ -45,19 +45,19 @@ vim.keymap.set({ "n", "v" }, "<Leader>d", '"_d', { desc = "[d]elete", noremap = 
 vim.keymap.set("n", "<Leader>cx", ':!chmod +x "%"<Enter>', { desc = "chmod +[x]" })
 vim.keymap.set("n", "<Leader>nf", ":!npm run format<Enter>", { desc = "npm run [f]ormat" })
 vim.keymap.set("n", "<Leader>np", ':!npx prettier --write "%"<Enter>', { desc = "npx [p]rettier --write" })
-vim.keymap.set("n", "<Leader>b", ':silent !zen-browser "%"<Enter>', { desc = "open in [b]rowser", silent = true })
+vim.keymap.set("n", "<Leader>b", ':silent !zen-browser "%"<Enter>', { desc = "Open in [b]rowser", silent = true })
 
 -- Misc
 vim.keymap.set("n", "<Esc>", ":nohlsearch<Enter>", { silent = true })
-vim.keymap.set("n", "<Leader>ts", ":set spell!<Enter>", { desc = "toggle [s]pell check" })
-vim.keymap.set("n", "<Leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "re[n]ame" })
+vim.keymap.set("n", "<Leader>ts", ":set spell!<Enter>", { desc = "Toggle [s]pell check" })
+vim.keymap.set("n", "<Leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Re[n]ame" })
 
 -- Indent buffer without changing view
 vim.keymap.set("n", "<Leader>=", function()
 	local view = vim.fn.winsaveview()
 	vim.cmd("normal! gg=G")
 	vim.fn.winrestview(view)
-end, { desc = "indent buffer" })
+end, { desc = "Indent buffer" })
 
 -- Go to next opening pair
 vim.keymap.set({ "n", "x" }, ")", function()

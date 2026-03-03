@@ -33,5 +33,5 @@ local function ldesc(desc)
 	return { desc = "LSP: " .. desc }
 end
 
-vim.keymap.set("n", "<Leader>td", toggle_diagnostics, ldesc("toggle [d]iagnostics"))
+vim.keymap.set("n", "<Leader>td", toggle_diagnostics, ldesc("Toggle [d]iagnostics"))
 vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, ldesc("[q]uickfix diagnostics"))

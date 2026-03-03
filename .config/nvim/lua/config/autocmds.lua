@@ -73,7 +73,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- LSP keymaps
 		local picker = require("snacks").picker
 		local function gdesc(desc)
-			return { desc = "LSP: goto " .. desc }
+			return { desc = "LSP: Go to " .. desc }
 		end
 		local function ldesc(desc)
 			return { desc = "LSP: " .. desc }
@@ -85,18 +85,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "grr", picker.lsp_references, gdesc("[r]eferences"))
 		vim.keymap.set("n", "gri", picker.lsp_implementations, gdesc("[i]mplementation"))
 
-		vim.keymap.set("n", "grn", vim.lsp.buf.rename, ldesc("re[n]ame"))
+		vim.keymap.set("n", "grn", vim.lsp.buf.rename, ldesc("Re[n]ame"))
 		vim.keymap.set("n", "grt", picker.lsp_type_definitions, ldesc("[t]ype definition"))
 		vim.keymap.set("n", "<Leader>sd", picker.lsp_symbols, ldesc("[d]ocument symbols"))
 		vim.keymap.set("n", "<Leader>sw", picker.lsp_workspace_symbols, ldesc("[w]orkspace symbols"))
 
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true })
-		vim.keymap.set({ "n", "x" }, "gra", vim.lsp.buf.code_action, ldesc("code [a]ctions"))
+		vim.keymap.set({ "n", "x" }, "gra", vim.lsp.buf.code_action, ldesc("Code [a]ctions"))
 
 		vim.keymap.set("n", "<Leader>th", function()
 			local lsp_hint = { bufnr = bufnum }
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(lsp_hint), lsp_hint)
-		end, ldesc("toggle inlay [h]ints"))
+		end, ldesc("Toggle inlay [h]ints"))
 	end,
 })
 

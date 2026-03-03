@@ -19,7 +19,7 @@ return {
 			{
 				"<Leader>ss",
 				":AutoSession search<Enter>",
-				desc = "search [s]essions",
+				desc = "Search [s]essions",
 			},
 		},
 

@@ -8,7 +8,7 @@ return {
 
 		vim.keymap.set("n", "<Leader>ti", function()
 			indent.enable(not indent.is_enabled())
-		end, { desc = "toggle [i]ndent guides" })
+		end, { desc = "Toggle [i]ndent guides" })
 
 		vim.api.nvim_set_hl(0, "BlinkIndentFocused", { default = true, fg = "#808080" })
 		vim.api.nvim_set_hl(0, "BlinkIndentFocusedUnderline", { default = true, sp = "#808080", underline = true })
