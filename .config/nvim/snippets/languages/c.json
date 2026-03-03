@@ -1,6 +1,6 @@
 {
-	"test template": {
-		"prefix": "test",
+	"output": {
+		"prefix": "output",
 		"body": [
 			"#include <stdio.h>",
 			"",
@@ -11,6 +11,6 @@
 			"\treturn 0;",
 			"}"
 		],
-		"description": "Test template"
+		"description": "Quick output"
 	}
 }
