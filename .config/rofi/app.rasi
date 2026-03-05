@@ -3,7 +3,7 @@
 @theme "~/.config/rofi/theme.rasi"
 
 configuration {
-	font:                   "Commit Mono Nerd Font 12";
+	font:                   "CommitMono Nerd Font 12";
 	display-drun:           " ";
 	drun-display-format:    "[<span weight='bold'>{name}</span>] [<span alpha='80%' weight='light'><i>({generic})</i></span>]";
 }
@@ -28,7 +28,7 @@ mainbox {
 }
 
 textbox-custom {
-	font:                   "Commit Mono Nerd Font Bold 12";
+	font:                   "CommitMono Nerd Font Bold 12";
 	horizontal-align:       0.5;
 	padding:                2px 0;
 	background-color:       @select-bg;

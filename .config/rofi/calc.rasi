@@ -3,7 +3,7 @@
 @theme "~/.config/rofi/theme.rasi"
 
 configuration {
-	font:                   "Commit Mono Nerd Font 12";
+	font:                   "CommitMono Nerd Font 12";
 	calc-display-format:    "{name}";
 }
 
@@ -30,7 +30,7 @@ mainbox {
 }
 
 textbox-custom {
-	font:                   "Commit Mono Nerd Font Bold 12";
+	font:                   "CommitMono Nerd Font Bold 12";
 	horizontal-align:       0.5;
 	padding:                2px 0;
 	background-color:       @select-bg;
@@ -53,7 +53,7 @@ message {
 }
 
 textbox {
-	font:                   "Commit Mono Nerd Font 18";
+	font:                   "CommitMono Nerd Font 18";
 	horizontal-align:       1;
 	padding:                8px;
 	background-color:       inherit;
