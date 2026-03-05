@@ -71,11 +71,9 @@ alias la="ls -A"
 alias ll="ls -alh"
 
 # Find
-alias find="fd"
-alias fd="fd --hidden --exclude timeshift"
+alias fd="fd --hidden"
 alias fdf="fd --type file"
 alias fdd="fd --type dir"
-# alias grep="rg"
 
 # Pacman
 alias pup="sudo pacman -Syu"
@@ -97,7 +95,6 @@ alias gi="git init"
 alias ga="git add"
 alias gc="git commit"
 alias gcm="git commit -m"
-alias gr="git reset"
 alias grs="git restore --staged"
 alias gb="git branch"
 alias gco="git checkout"
@@ -112,7 +109,6 @@ alias glo="git log --graph --oneline"
 alias gd='f() { git diff "$@" | bat }; f'
 
 # Vim
-alias v="vim"
 alias n="nvim"
 alias nn="cd $XDG_CONFIG_HOME/nvim && nvim"
 alias nh="cd $XDG_CONFIG_HOME/hypr && nvim"
@@ -136,11 +132,6 @@ alias tls="tmux list-sessions"
 alias tk="tmux kill-session"
 alias tks="tmux kill-server"
 alias tc="tmux clearhist"
-
-# Misc
-alias z="cd"
-alias yt="yt-dlp"
-alias discord="discord --ozone-platform-hint=auto"
 
 #-------------#
 #   Exports   #
