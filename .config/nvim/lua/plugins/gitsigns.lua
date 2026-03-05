@@ -1,8 +1,6 @@
 return {
 	"lewis6991/gitsigns.nvim",
 
-	event = "BufReadPost",
-
 	opts = {
 		on_attach = function(bufnr)
 			local gitsigns = require("gitsigns")
@@ -52,10 +50,10 @@ return {
 				gitsigns.blame_line({ full = true })
 			end, hdesc("[b]lame FULL"))
 
-			vim.keymap.set("n", "<Leader>gd", gitsigns.diffthis, hdesc("[d]iff"))
-			vim.keymap.set("n", "<Leader>gD", function()
-				gitsigns.diffthis("~")
-			end, hdesc("[D]iff against ~"))
+			-- vim.keymap.set("n", "<Leader>gd", gitsigns.diffthis, hdesc("[d]iff"))
+			-- vim.keymap.set("n", "<Leader>gD", function()
+			-- 	gitsigns.diffthis("~")
+			-- end, hdesc("[D]iff against ~"))
 
 			vim.keymap.set("n", "<Leader>gQ", function()
 				gitsigns.setqflist("all")
