@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# Display the current track
+# Passing "truncate" truncates the output to $MAXLEN characters
+#
+# Requires playerctl
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    July 31, 2025
+# License: MIT
+
+MAXLEN=40
+
+get() {
+	playerctl metadata --format "{{ markup_escape($1) }}"
+}
+
+main() {
+	local status
+	status=$(get "status")
+
+	case $status in
+		Playing) icon='󰐊' ;;
+		Paused)  icon='󰏤' ;;
+		*)       return 0 ;;
+	esac
+
+	local title artist track
+
+	title=$(get "title")
+	artist=$(get "artist")
+	track="$title — $artist"
+
+	if [[ $1 == truncate ]] && ((${#track} > MAXLEN)); then
+		track=${track:0:MAXLEN}
+		track+='…'
+	fi
+
+	printf "%s %s" "$icon" "$track"
+}
+
+main "$@"

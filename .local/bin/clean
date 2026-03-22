@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# Remove orphaned packages and clear package cache
+#
+# Requires pacman and paru
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    January 29, 2026
+# License: MIT
+
+FG_RED="\e[31m"
+FG_GREEN="\e[32m"
+FG_BLUE="\e[34m"
+FG_RESET="\e[39m"
+
+printf() {
+	command printf "$@" >&2
+}
+
+remove_orphans() {
+	printf "%bRemoving orphaned packages...%b\n" "$FG_BLUE" "$FG_RESET"
+
+	local orph=()
+	mapfile -t orph < <(pacman -Qtdq)
+
+	if ((${#orph[@]})); then
+		sudo pacman -Rns "${orph[@]}" --noconfirm
+	else
+		printf "No orphaned packages found.\n"
+	fi
+}
+
+clear_cache() {
+	printf "\n%bClearing package cache...%b\n" "$FG_BLUE" "$FG_RESET"
+
+	sudo paccache -rk1  # retain only one past version
+	sudo paccache -ruk0 # remove all cached versions of uninstalled packages
+
+	printf "\n%bPruning old AUR package cache...%b\n" "$FG_BLUE" "$FG_RESET"
+
+	if [[ -d "$HOME/.cache/paru" ]]; then
+		paccache -rk1 -c "$HOME/.cache/paru"
+	else
+		printf "%bParu cache directory not found.%b\n" "$FG_RED" "$FG_RESET"
+	fi
+}
+
+main() {
+	remove_orphans
+	clear_cache
+
+	printf "\n%bCleanup complete!%b\n" "$FG_GREEN" "$FG_RESET"
+}
+
+main

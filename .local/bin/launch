@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+#
+# Launch a Rofi menu based on the option passed
+#
+# Requires cliphist, rofi, rofi-calc, rofi-emoji, and wl-clipboard (wl-copy)
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    January 3, 2025
+# License: MIT
+
+DIR="$HOME/.config/rofi"
+
+usage() {
+	cat <<- EOF
+		USAGE: ${0##*/} {app|calc|clip|emoji|win}
+
+		Launch a Rofi menu based on the option passed
+
+		OPTIONS:
+		  app      app launcher
+		  calc     calculator
+		  clip     clipboard
+		  emoji    emoji picker
+		  win      window switcher
+	EOF
+}
+
+main() {
+	case $1 in
+		app)
+			pkill rofi ||
+			      rofi -show drun       \
+			           -show-icons      \
+			           -disable-history \
+			           -config "$DIR/app.rasi"
+			;;
+		calc)
+			pkill rofi ||
+			      rofi -show calc          \
+			           -modi calc          \
+			           -hint-welcome ""    \
+			           -hint-result ""     \
+			           -kb-accept-entry "" \
+			           -lines 0            \
+			           -no-history         \
+			           -no-show-match      \
+			           -no-sort            \
+			           -terse              \
+			           -config "$DIR/calc.rasi"
+			;;
+		clip)
+			pkill rofi ||
+			cliphist list |
+			      rofi -dmenu             \
+			           -display-columns 2 \
+			           -p " "            \
+			           -config "$DIR/clip.rasi" |
+			cliphist decode |
+			wl-copy
+			;;
+		emoji)
+			pkill rofi ||
+			      rofi -modi emoji             \
+			           -show emoji             \
+			           -emoji-format "{emoji}" \
+			           -kb-accept-alt ""       \
+			           -kb-custom-1 Ctrl+c     \
+			           -kb-secondary-copy ""   \
+			           -config "$DIR/emoji.rasi"
+			;;
+		win)
+			pkill rofi ||
+			      rofi -show window \
+			           -config "$DIR/win.rasi"
+			;;
+		*)
+			usage >&2
+			return 1
+			;;
+	esac
+}
+
+main "$@"

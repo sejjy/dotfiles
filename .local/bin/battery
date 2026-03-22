@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# Send a notification when the battery state changes
+#
+# Reference:
+# https://github.com/ericmurphyxyz/dotfiles/blob/master/.local/bin/battery-charging
+#
+# Add the following rules to /etc/udev/rules.d/60-power.rules (replace <user>
+# with your user):
+#
+# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/su <user> --command '~/.local/bin/battery charging'"
+# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/su <user> --command '~/.local/bin/battery discharging'"
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 15, 2025
+# License: MIT
+
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+
+usage() {
+	cat <<- EOF
+		USAGE: ${0##*/} {charging|discharging}
+
+		See ${0/$HOME/'~'} for more information
+	EOF
+}
+
+main() {
+	local state=$1
+
+	if [[ ! $state =~ ^(dis)?charging$ ]]; then
+		usage >&2
+		exit 1
+	fi
+
+	local path level
+
+	path=$(upower -e | grep -m 1 "BAT")
+	level=$(upower -i "$path" | awk '/percentage:/ {print $2}')
+	level=${level%\%}
+
+	local floor icon
+
+	floor=$((level / 10 * 10))
+	printf -v icon "battery-%03d" $floor
+
+	if [[ $state == charging ]]; then
+		icon+="-charging"
+	fi
+
+	notify-send "Battery ${state^} ($level%)" -i "$icon" \
+		-h string:x-canonical-private-synchronous:battery-state
+}
+
+main "$@"

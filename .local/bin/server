@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#
+# Start, stop, and check the status of httpd and mariadb services
+#
+# Requires systemd (systemctl)
+#
+# USAGE: server {start|stop|status}
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    January 30, 2026
+# License: MIT
+
+server() {
+	sudo systemctl "$@" httpd.service
+	sudo systemctl "$@" mariadb.service
+}
+
+main() {
+	case $1 in
+		start)
+			# Apache (httpd.service)
+			sudo mkdir -p /run/httpd
+			sudo chown http:http /run/httpd
+
+			# MariaDB (mariadb.service)
+			sudo mkdir -p /run/mysqld
+			sudo chown mysql:mysql /run/mysqld
+			sudo chmod 755 /run/mysqld
+
+			server "start"
+			;;
+		stop)
+			server "stop"
+			;;
+		status)
+			server "--no-pager" "status"
+			;;
+		*)
+			printf "server {start|stop|status}\n" >&2
+			return 1
+			;;
+	esac
+
+	return 0
+}
+
+main "$@"

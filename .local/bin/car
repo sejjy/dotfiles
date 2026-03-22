@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#
+# Compile and run a C program (relative path only)
+#
+# Requires gcc
+#
+# USAGE: car path/to/file.c
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    January 29, 2026
+# License: MIT
+
+set -e
+
+fatal() {
+	{
+		printf "\e[31m"
+		printf "%s: %b" "${0##*/}" "$@"
+		printf "\e[39m\n"
+	} >&2
+	exit 1
+}
+
+main() {
+	local prog=$1
+
+	if [[ $prog == /* ]]; then
+		fatal "relative path only"
+	elif [[ ! -f $prog || $prog != *.c ]]; then
+		fatal "unknown C file"
+	fi
+
+	local prog_dir=${prog%/*}
+	local prog_name=${prog##*/}
+
+	if [[ $prog_dir == "$prog" ]]; then
+		prog_dir='.'
+	fi
+
+	local bin_dir="$prog_dir/bin"
+	local bin_name=${prog_name%.c}
+	local bin="$bin_dir/$bin_name"
+
+	if [[ ! -d $bin_dir ]]; then
+		mkdir -p "$bin_dir"
+	fi
+
+	gcc -O -Wall -W -pedantic -ansi -std=c99 -o "$bin" "$prog" && "$bin"
+}
+
+main "$@"
