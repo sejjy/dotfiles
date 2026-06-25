@@ -95,6 +95,7 @@ alias gi="git init"
 alias ga="git add"
 alias gc="git commit"
 alias gcm="git commit -m"
+alias gr="git restore"
 alias grs="git restore --staged"
 alias gb="git branch"
 alias gco="git checkout"
@@ -132,6 +133,9 @@ alias tls="tmux list-sessions"
 alias tk="tmux kill-session"
 alias tks="tmux kill-server"
 alias tc="tmux clearhist"
+
+# Misc
+alias time="/usr/bin/time -p"
 
 #-------------#
 #   Exports   #
