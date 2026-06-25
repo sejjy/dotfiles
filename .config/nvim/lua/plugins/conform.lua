@@ -30,7 +30,11 @@ return {
 			javascript = { "prettierd" },
 			lua = { "stylua" },
 			markdown = { "prettierd" },
-			python = { "ruff" },
+			python = {
+				"ruff_fix",
+				"ruff_format",
+				"ruff_organize_imports",
+			},
 			sh = { "shfmt" },
 		},
 
