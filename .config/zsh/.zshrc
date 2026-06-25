@@ -141,9 +141,12 @@ alias time="/usr/bin/time -p"
 #   Exports   #
 #-------------#
 
-export PATH="$HOME/.local/bin:$PATH"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
+export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH"
+
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
+
 export FZF_DEFAULT_OPTS="--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8,fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC,marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8,selected-bg:#45475A,border:#6C7086,label:#CDD6F4"
 
 #-------------#
