@@ -23,6 +23,7 @@ return {
 			"gitcommit",
 			"gitignore",
 			"html",
+			"java",
 			"javascript",
 			"json",
 			"lua",
