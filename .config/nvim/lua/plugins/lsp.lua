@@ -38,6 +38,18 @@ return {
 				settings = { css = { validate = false } },
 			},
 
+			-- Java
+			jdtls = {
+				settings = {
+					java = {
+						project = {
+							outputPath = "bin",
+							sourcePaths = { "src" },
+						},
+					},
+				},
+			},
+
 			-- Lua
 			lua_ls = {
 				settings = {
