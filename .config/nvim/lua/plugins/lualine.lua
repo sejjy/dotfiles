@@ -15,6 +15,10 @@ return {
 		end
 
 		require("lualine").setup({
+			options = {
+				globalstatus = true,
+			},
+
 			sections = {
 				lualine_a = {
 					{
@@ -98,12 +102,18 @@ return {
 			inactive_sections = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = { "filename" },
+				lualine_c = {
+					{
+						"filename",
+						color = { fg = "#e6edf3", bg = "NONE" },
+					},
+				},
 				lualine_x = {
 					{
 						"lsp_status",
 						icon = "",
 						symbols = { spinner = "", done = "", separator = ", " },
+						color = { fg = "#e6edf3", bg = "NONE" },
 						fmt = trunc(0, 0, 80, true),
 					},
 				},
@@ -116,5 +126,8 @@ return {
 		vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "lualine_c_normal", { bg = "NONE" })
+
+		-- Remove inactive bg color
+		vim.api.nvim_set_hl(0, "lualine_c_inactive", { bg = "NONE" })
 	end,
 }
