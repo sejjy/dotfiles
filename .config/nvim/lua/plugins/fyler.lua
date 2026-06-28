@@ -1,7 +1,7 @@
 return {
 	"A7Lavinraj/fyler.nvim",
 
-	branch = "stable",
+	tag = "v2.0.0",
 
 	keys = {
 		{ "<Leader>e", ":Fyler<Enter>", desc = "[e]xplorer", silent = true },
