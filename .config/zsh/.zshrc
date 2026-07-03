@@ -239,13 +239,6 @@ function e() {
 	fi
 }
 
-# fff
-# https://github.com/dylanaraps/fff
-function f() {
-	fff "$@"
-	cd "$(< "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return 1
-}
-
 # Bash `help` builtin
 function help() {
 	bash -c "help $1" bash "$1"
