@@ -1,0 +1,166 @@
+{
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[md]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[php]": {
+		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+	},
+	"[python]": {
+		"diffEditor.ignoreTrimWhitespace": false
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "mkhl.shfmt"
+	},
+	"chat.agentsControl.enabled": false,
+	"chat.commandCenter.enabled": false,
+	"chat.editor.fontSize": 11,
+	"chat.fontSize": 12,
+	"cmake.configureOnOpen": true,
+	"cmake.options.statusBarVisibility": "visible",
+	"code-runner.clearPreviousOutput": true,
+	"code-runner.executorMap": {
+		"cpp": "cd $dir && g++ $fileName -o ./bin/$fileNameWithoutExt && ./bin/$fileNameWithoutExt"
+	},
+	"code-runner.runInTerminal": true,
+	"css.validate": false,
+	"debug.onTaskErrors": "showErrors",
+	"debug.terminal.clearBeforeReusing": true,
+	"diffEditor.ignoreTrimWhitespace": false,
+	"discord.suppressNotifications": true,
+	"discord.swapBigAndSmallImage": true,
+	"editor.aiStats.enabled": false,
+	"editor.cursorSurroundingLines": 10,
+	"editor.detectIndentation": false,
+	"editor.fontFamily": "CommitMono Nerd Font",
+	"editor.fontSize": 13,
+	"editor.fontWeight": "normal",
+	"editor.guides.bracketPairs": "active",
+	"editor.insertSpaces": false,
+	"editor.lineDecorationsWidth": 0,
+	"editor.lineHeight": 1.4,
+	"editor.linkedEditing": true,
+	"editor.minimap.enabled": false,
+	"editor.overtypeCursorStyle": "line",
+	"editor.overviewRulerBorder": false,
+	"editor.roundedSelection": false,
+	"editor.stickyScroll.enabled": false,
+	"editor.unicodeHighlight.ambiguousCharacters": false,
+	"editor.unicodeHighlight.invisibleCharacters": false,
+	"editor.unicodeHighlight.nonBasicASCII": false,
+	"editor.wordWrap": "on",
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"extensions.experimental.affinity": {
+		"asvetliakov.vscode-neovim": 1
+	},
+	"extensions.ignoreRecommendations": true,
+	"files.autoSave": "afterDelay",
+	"git.autofetch": true,
+	"git.decorations.enabled": false,
+	"git.openRepositoryInParentFolders": "always",
+	"github.copilot.editor.enableAutoCompletions": true,
+	"github.copilot.enable": {
+		"*": false
+	},
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"githubPullRequests.pullBranch": "never",
+	"gitlens.ai.model": "vscode",
+	"gitlens.ai.vscode.model": "copilot:gpt-4.1",
+	"keyboard.dispatch": "keyCode",
+	"projectManager.sortList": "Name",
+	"redhat.telemetry.enabled": true,
+	"security.workspace.trust.banner": "never",
+	"security.workspace.trust.emptyWindow": false,
+	"security.workspace.trust.untrustedFiles": "open",
+	"terminal.external.linuxExec": "bash",
+	"terminal.integrated.cursorBlinking": true,
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"terminal.integrated.defaultProfile.windows": "Command Prompt",
+	"terminal.integrated.env.windows": {},
+	"terminal.integrated.fontFamily": "JetBrainsMono Nerd Font, JetBrains Mono",
+	"terminal.integrated.fontSize": 12,
+	"terminal.integrated.letterSpacing": 1,
+	"terminal.integrated.lineHeight": 1.1,
+	"terminal.integrated.profiles.linux": {
+		"bash": {
+			"path": "/usr/bin/bash"
+		}
+	},
+	"update.mode": "manual",
+	"vscode-neovim.ctrlKeysForNormalMode": [
+		"a",
+		"d",
+		"r",
+		"u",
+		"x",
+		"n",
+		"p",
+		"y"
+	],
+	"vscode-neovim.neovimClean": true,
+	"window.commandCenter": false,
+	"window.customTitleBarVisibility": "never",
+	"window.menuBarVisibility": "toggle",
+	"window.titleBarStyle": "native",
+	"workbench.activityBar.location": "bottom",
+	"workbench.colorCustomizations": {
+		"activityBar.border": "#010409",
+		"breadcrumb.background": "#010409",
+		"editorCursor.foreground": "#ffffff",
+		"editorGroup.border": "#ffffffcc",
+		"editorGroupHeader.tabsBorder": "#010409",
+		"panel.border": "#ffffff66",
+		"scrollbar.shadow": "#0d1117",
+		"scrollbarSlider.activeBackground": "#000000",
+		"scrollbarSlider.background": "#00000080",
+		"scrollbarSlider.hoverBackground": "#000000",
+		"sideBar.border": "#010409",
+		"sideBar.foreground": "#ffffffcc",
+		"sideBarSectionHeader.border": "#ffffff66",
+		"sideBarStickyScroll.border": "#010409",
+		"sideBarStickyScroll.shadow": "#010409",
+		// "statusBar.border": "#0d1117",
+		// "statusBar.foreground": "#ffffff"
+		"tab.activeBackground": "#010409",
+		"tab.activeBorder": "#010409",
+		"tab.activeBorderTop": "#ffffff66",
+		"tab.border": "#010409",
+		"tab.unfocusedActiveBackground": "#010409",
+		"tab.unfocusedActiveBorder": "#010409",
+		"tab.unfocusedActiveBorderTop": "#010409",
+		"tree.inactiveIndentGuidesStroke": "#ffffff1a",
+		"tree.indentGuidesStroke": "#ffffff66"
+	},
+	"workbench.colorTheme": "GitHub Dark Default",
+	"workbench.editorAssociations": {
+		"*.copilotmd": "vscode.markdown.preview.editor",
+		"*.icon": "default"
+	},
+	"workbench.iconTheme": "catppuccin-mocha",
+	"workbench.layoutControl.enabled": false,
+	"workbench.navigationControl.enabled": false,
+	"workbench.secondarySideBar.defaultVisibility": "hidden",
+	"workbench.settings.applyToAllProfiles": [
+		"c-cpp-compile-run.run-in-external-terminal"
+	],
+	"workbench.sideBar.location": "right",
+	"workbench.startupEditor": "none"
+}
