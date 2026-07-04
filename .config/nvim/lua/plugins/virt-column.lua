@@ -3,7 +3,7 @@ return {
 
 	config = function()
 		local function toggle_colorcolumn()
-			vim.wo.colorcolumn = (vim.wo.colorcolumn == "" and "80") or ""
+			vim.wo.colorcolumn = (vim.wo.colorcolumn == "" and "80,120") or ""
 		end
 
 		local colorcolumn_group = vim.api.nvim_create_augroup("ColorcolumnGroup", { clear = true })

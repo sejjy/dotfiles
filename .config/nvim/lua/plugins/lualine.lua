@@ -104,6 +104,10 @@ return {
 				lualine_b = {},
 				lualine_c = {
 					{
+						"filetype",
+						color = { fg = "#e6edf3", bg = "NONE" },
+					},
+					{
 						"filename",
 						color = { fg = "#e6edf3", bg = "NONE" },
 					},
