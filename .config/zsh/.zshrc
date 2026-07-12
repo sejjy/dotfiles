@@ -13,11 +13,8 @@ fi
 
 setopt AUTO_CD
 setopt GLOB_DOTS
-setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
-setopt HIST_SAVE_BY_COPY
 setopt HIST_SAVE_NO_DUPS
-setopt INC_APPEND_HISTORY
 setopt HASH_LIST_ALL
 setopt CORRECT
 
@@ -26,7 +23,7 @@ setopt CORRECT
 #----------------#
 
 HISTFILE="$ZDOTDIR/.zsh_history"
-HISTSIZE=5000
+HISTSIZE=10000
 SAVEHIST=5000
 ZLE_RPROMPT_INDENT=0
 
@@ -46,114 +43,67 @@ zstyle ":completion:*" rehash true
 #   Keymaps   #
 #-------------#
 
-bindkey -v # Vi mode
+bindkey -v # vi mode
 bindkey "^ " autosuggest-accept
 
 #-------------#
 #   Aliases   #
 #-------------#
 
-# Shell
-alias reload="exec zsh"
-alias c="clear"
-alias :q="exit"
-
-# File
+# file
 alias cp="cp -vi"
 alias mv="mv -vi"
 alias rm="rm -vi"
-alias cx="chmod -v +x"
 alias mkdir="mkdir -vp"
 
-# List
+# list
 alias ls="ls --color=auto --group-directories-first"
-alias la="ls -A"
-alias ll="ls -alh"
+alias ll="ls -alhv"
 
-# Find
-alias fd="fd --hidden"
-alias fdf="fd --type file"
-alias fdd="fd --type dir"
+# find
+alias fd="fd -H"
+alias fdf="fd -tf"
+alias fdd="fd -td"
 
-# Pacman
-alias pup="sudo pacman -Syu"
-alias pfd="pacman -Ss"
-alias pdl="sudo pacman -S"
-alias prm="sudo pacman -Rns"
-alias pls="pacman -Q"
-
-# AUR
-alias aup="paru -Syu"
-alias afd="paru -Ss"
-alias adl="paru -S"
-alias arm="paru -Rns"
-alias als="paru -Qm"
-
-# Git
+# git
 alias gcl="git clone"
 alias gi="git init"
 alias ga="git add"
 alias gc="git commit"
-alias gcm="git commit -m"
-alias gr="git restore"
-alias grs="git restore --staged"
 alias gb="git branch"
 alias gco="git checkout"
-alias gcp="git cherry-pick"
 alias gp="git push"
 alias gpl="git pull"
 alias gs="git status"
-alias gst="git stash"
-alias gstp="git stash pop"
 alias gl="git log"
 alias glo="git log --graph --oneline"
-alias gd='f() { git diff "$@" | bat }; f'
 
-# Vim
+# neovim
 alias n="nvim"
-alias nn="cd $XDG_CONFIG_HOME/nvim && nvim"
-alias nh="cd $XDG_CONFIG_HOME/hypr && nvim"
-alias nw="cd $XDG_CONFIG_HOME/waybar && nvim"
-
-# Docker
-alias dr="docker run"
-alias dp="docker ps"
-alias dpa="docker ps --all"
-alias dim="docker images"
-alias drm="docker rm"
-alias drmi="docker rmi"
-alias ds="docker start"
-alias dst="docker stop"
-
-# Tmux
-alias t="tmux"
-alias tn="tmux new-session"
-alias ta="tmux attach-session"
-alias tls="tmux list-sessions"
-alias tk="tmux kill-session"
-alias tks="tmux kill-server"
-alias tc="tmux clearhist"
-
-# Misc
-alias time="/usr/bin/time -p"
 
 #-------------#
 #   Exports   #
 #-------------#
 
+# java
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
-export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$PATH"
 
+# bin
+export PATH="$HOME/.local/bin:$PATH"
+
+# neovim
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
+# fzf
 export FZF_DEFAULT_OPTS="--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8,fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC,marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8,selected-bg:#45475A,border:#6C7086,label:#CDD6F4"
 
 #-------------#
 #   Plugins   #
 #-------------#
 
-# Better vi mode
+# better vi mode
 # https://github.com/jeffreytse/zsh-vi-mode
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 ZVM_CURSOR_STYLE_ENABLED=false
@@ -162,12 +112,12 @@ ZVM_VI_HIGHLIGHT_FOREGROUND="#cdd6f4"
 ZVM_VI_HIGHLIGHT_BACKGROUND="#45475a"
 ZVM_LINE_INIT_MODE="$ZVM_MODE_INSERT"
 
-# Live suggestions
+# live suggestions
 # https://github.com/zsh-users/zsh-autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# Prompt
+# prompt
 # https://github.com/romkatv/powerlevel10k
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit "$ZDOTDIR/.p10k.zsh".
@@ -175,7 +125,7 @@ if [[ -f "$ZDOTDIR/.p10k.zsh" ]]; then
 	source "$ZDOTDIR/.p10k.zsh"
 fi
 
-# Prompt overrides
+# prompt overrides
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='󰣇'
 typeset -g POWERLEVEL9K_LOCK_ICON=''
 typeset -g POWERLEVEL9K_HOME_ICON=''
@@ -191,7 +141,7 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 #   Extensions   #
 #----------------#
 
-# Smarter cd
+# smarter cd
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
@@ -223,7 +173,7 @@ function command_not_found_handler() {
 	return 127
 }
 
-# Ranger
+# ranger
 # https://github.com/ranger/ranger
 function e() {
 	local temp
@@ -239,7 +189,7 @@ function e() {
 	fi
 }
 
-# Bash `help` builtin
+# bash `help` builtin
 function help() {
 	bash -c "help $1" bash "$1"
 }
