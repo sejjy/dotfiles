@@ -225,7 +225,7 @@
                         "name": "Video Capture Border",
                         "source_uuid": "97908f58-ea2a-4920-8c13-dc810c345d21",
                         "visible": true,
-                        "locked": true,
+                        "locked": false,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -235,10 +235,10 @@
                         "bounds_type": 0,
                         "bounds_align": 0,
                         "bounds_crop": false,
-                        "crop_left": 0,
+                        "crop_left": 64,
                         "crop_top": 0,
                         "crop_right": 0,
-                        "crop_bottom": 0,
+                        "crop_bottom": 44,
                         "id": 8,
                         "group_item_backup": false,
                         "pos": {
@@ -250,12 +250,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 0.535937488079071,
-                            "y": 0.5354166626930237
+                            "x": 0.59375,
+                            "y": 0.5940366983413696
                         },
                         "scale_rel": {
-                            "x": 0.535937488079071,
-                            "y": 0.5354166626930237
+                            "x": 0.59375,
+                            "y": 0.5940366983413696
                         },
                         "bounds": {
                             "x": 0.0,
