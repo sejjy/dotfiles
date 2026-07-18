@@ -74,8 +74,8 @@ return {
 					{
 						"lsp_status",
 						icon = "",
-						color = { fg = "#e6edf3", bg = "NONE" },
 						symbols = { spinner = "", done = "", separator = ", " },
+						color = { fg = "#e6edf3", bg = "NONE" },
 						padding = { right = 1 },
 						fmt = trunc(160, 20, 80, false),
 					},
@@ -102,22 +102,10 @@ return {
 			inactive_sections = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = {
-					{
-						"filetype",
-						color = { fg = "#e6edf3", bg = "NONE" },
-					},
-					{
-						"filename",
-						color = { fg = "#e6edf3", bg = "NONE" },
-					},
-				},
+				lualine_c = {},
 				lualine_x = {
 					{
 						"lsp_status",
-						icon = "",
-						symbols = { spinner = "", done = "", separator = ", " },
-						color = { fg = "#e6edf3", bg = "NONE" },
 						fmt = trunc(0, 0, 80, true),
 					},
 				},
@@ -129,9 +117,5 @@ return {
 		-- Remove outer separator bg color
 		vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
-		vim.api.nvim_set_hl(0, "lualine_c_normal", { bg = "NONE" })
-
-		-- Remove inactive bg color
-		vim.api.nvim_set_hl(0, "lualine_c_inactive", { bg = "NONE" })
 	end,
 }
