@@ -2,7 +2,7 @@
 #
 # Launch a power menu
 #
-# Requires fzf and systemd (loginctl, systemctl)
+# Requires fzf
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 19, 2025

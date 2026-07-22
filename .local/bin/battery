@@ -49,7 +49,7 @@ main() {
 	fi
 
 	notify-send "Battery ${state^} ($level%)" -i "$icon" \
-		-h string:x-canonical-private-synchronous:battery-state
+		-h string:x-canonical-private-synchronous:battery
 }
 
 main "$@"
