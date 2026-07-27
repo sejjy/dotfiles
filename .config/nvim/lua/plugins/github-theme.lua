@@ -14,6 +14,7 @@ return {
 			specs = {
 				all = {
 					syntax = {
+						comment = "#6e7681",
 						operator = "#ff7b72",
 						preproc = "#d2a8ff",
 					},

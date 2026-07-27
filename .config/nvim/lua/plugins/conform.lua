@@ -47,7 +47,7 @@ return {
 					local args = { "-filename", ctx.filename }
 					local config = vim.fs.find(".editorconfig", { path = vim.fn.getcwd(), upward = true, limit = 1 })
 					if not next(config) then
-						vim.list_extend(args, { "--case-indent", "--space-redirects" })
+						vim.list_extend(args, { "--case-indent" })
 					end
 					return args
 				end,
