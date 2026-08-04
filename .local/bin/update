@@ -9,6 +9,7 @@
 # License: MIT
 
 TIMEOUT=10
+HELPER=
 
 GREEN="\e[32m"
 BLUE="\e[34m"
@@ -21,7 +22,7 @@ usage() {
 		Update Arch packages
 
 		OPTIONS:
-		  module    Print the number of pending updates in JSON format
+		  module    Print Waybar-compatible JSON output
 		  <none>    Launch the CLI
 	EOF
 }
@@ -43,32 +44,31 @@ detect_helper() {
 check_updates() {
 	FAILED=false
 
-	local output status
-	output=$(timeout $TIMEOUT checkupdates)
+	local packages status
+	packages=$(timeout $TIMEOUT checkupdates)
 	status=$?
 
 	if ((status != 0 && status != 2)); then
 		FAILED=true
 		UPDATES=0
 		return 1
-	else
-		UPDATES=$(grep -c . <<<"$output")
 	fi
-
-	detect_helper
+	UPDATES=$(grep -c . <<<"$packages")
 
 	if [[ -n $HELPER ]]; then
-		local aur_output aur_status
-		aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
+		local aur_packages aur_status
+		aur_packages=$(timeout "$TIMEOUT" "$HELPER" -Qua)
 		aur_status=$?
 
-		if ((${#aur_output} > 0 && aur_status != 0)); then
+		if ((${#aur_packages} > 0 && aur_status != 0)); then
 			FAILED=true
 			AUR_UPDATES=0
 			return 1
-		else
-			AUR_UPDATES=$(grep -c . <<<"$aur_output")
 		fi
+		AUR_UPDATES=$(
+			# Exclude ignored AUR packages
+			awk '!/\[ignored\]/ {print $1}' <<<"$aur_packages" | grep -c .
+		)
 	fi
 }
 
@@ -76,7 +76,7 @@ update_packages() {
 	debug "${BLUE}Updating packages...${RESET}"
 
 	if [[ -n $HELPER ]]; then
-		$HELPER -Syu
+		command $HELPER -Syu
 	else
 		sudo pacman -Syu
 	fi
@@ -87,7 +87,7 @@ update_packages() {
 	read -rsn 1 -p "Press any key to exit..."
 }
 
-display_module() {
+print_module() {
 	local icon tooltip
 
 	if $FAILED; then
@@ -116,17 +116,19 @@ display_module() {
 main() {
 	case $1 in
 		module)
+			detect_helper
 			check_updates
-			display_module
+			print_module
+			;;
+		'')
+			trap "pkill -RTMIN+1 waybar" EXIT # Update the module on exit
+
+			detect_helper
+			update_packages
 			;;
 		*)
-			# Update the module on exit
-			trap "pkill -RTMIN+1 waybar" EXIT
-
-			debug "${BLUE}Checking for updates...${RESET}"
-			check_updates
-
-			update_packages
+			usage >&2
+			return 1
 			;;
 	esac
 }
