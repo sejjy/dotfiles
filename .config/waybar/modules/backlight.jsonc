@@ -6,8 +6,8 @@
 		],
 		"min-length": 7,
 		"max-length": 7,
-		"on-scroll-up": "~/.config/waybar/scripts/backlight up",
-		"on-scroll-down": "~/.config/waybar/scripts/backlight down",
+		"on-scroll-up": "~/.local/bin/backlight up",
+		"on-scroll-down": "~/.local/bin/backlight down",
 		"tooltip-format": "Screen Brightness"
 	}
 }

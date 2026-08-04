@@ -23,9 +23,9 @@
 		},
 		"min-length": 7,
 		"max-length": 7,
-		"on-click": "~/.config/waybar/scripts/volume output mute",
-		"on-scroll-up": "~/.config/waybar/scripts/volume output raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume output lower",
+		"on-click": "~/.local/bin/volume output mute",
+		"on-scroll-up": "~/.local/bin/volume output raise",
+		"on-scroll-down": "~/.local/bin/volume output lower",
 		"tooltip-format": "<b>Output Device</b>: {desc}"
 	},
 
@@ -35,9 +35,9 @@
 		"format-source-muted": "󰍭 {volume}%",
 		"min-length": 7,
 		"max-length": 7,
-		"on-click": "~/.config/waybar/scripts/volume input mute",
-		"on-scroll-up": "~/.config/waybar/scripts/volume input raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume input lower",
+		"on-click": "~/.local/bin/volume input mute",
+		"on-scroll-up": "~/.local/bin/volume input raise",
+		"on-scroll-down": "~/.local/bin/volume input lower",
 		"tooltip-format": "<b>Input Device</b>: {desc}"
 	}
 }
