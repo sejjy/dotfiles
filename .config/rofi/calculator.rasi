@@ -1,6 +1,6 @@
 /* Calculator */
 
-@theme "~/.config/rofi/theme.rasi"
+@theme "themes/catppuccin-mocha.rasi"
 
 configuration {
 	font:                   "CommitMono Nerd Font 12";
@@ -17,15 +17,15 @@ window {
 	height:                 138px;
 	border:                 4px;
 	border-radius:          12px;
-	border-color:           @main-br;
-	background-color:       @main-bg;
+	border-color:           @br;
+	background-color:       @bg-0;
 	children:               [ mainbox ];
 }
 
 mainbox {
 	spacing:                0;
-	background-color:       @main-br;
-	text-color:             @main-fg;
+	background-color:       @br;
+	text-color:             @fg;
 	children:               [ textbox-custom, message, inputbar ];
 }
 
@@ -33,8 +33,8 @@ textbox-custom {
 	font:                   "CommitMono Nerd Font Bold 12";
 	horizontal-align:       0.5;
 	padding:                2px 0;
-	background-color:       @select-bg;
-	text-color:             @select-fg;
+	background-color:       @active-bg;
+	text-color:             @active-fg;
 	expand:                 false;
 	content:                "󰃬 Calculator";
 }
@@ -44,12 +44,12 @@ textbox-custom {
 message {
 	border:                 2px 0 0;
 	border-radius:          10px;
-	border-color:           @main-br;
+	border-color:           @br;
 	cycle:                  false;
 	margin:                 0 0 -4px;
 	padding:                8px 8px 56px;
-	background-color:       @main-bg;
-	text-color:             @main-fg;
+	background-color:       @bg-0;
+	text-color:             @fg;
 }
 
 textbox {
@@ -57,7 +57,7 @@ textbox {
 	horizontal-align:       1;
 	padding:                8px;
 	background-color:       inherit;
-	text-color:             @main-fg;
+	text-color:             @fg;
 }
 
 /* Input */
@@ -66,7 +66,7 @@ inputbar {
 	margin:                 -40px 8px 8px;
 	border-radius:          8px;
 	spacing:                inherit;
-	background-color:       @input-bg;
+	background-color:       @bg-1;
 	text-color:             inherit;
 	children:               [ entry ];
 }

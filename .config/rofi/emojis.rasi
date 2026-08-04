@@ -1,11 +1,10 @@
-/* App launcher */
+/* Emoji picker */
 
-@theme "~/.config/rofi/theme.rasi"
+@theme "themes/catppuccin-mocha.rasi"
 
 configuration {
 	font:                   "CommitMono Nerd Font 12";
-	display-drun:           " ";
-	drun-display-format:    "[<span weight='bold'>{name}</span>] [<span alpha='80%' weight='light'><i>({generic})</i></span>]";
+	display-emoji:          " ";
 }
 
 /* Window */
@@ -14,16 +13,16 @@ window {
 	width:                  375px;
 	border:                 4px;
 	border-radius:          12px;
-	border-color:           @main-br;
-	background-color:       @main-bg;
+	border-color:           @br;
+	background-color:       @bg-0;
 	children:               [ mainbox ];
 }
 
 mainbox {
 	margin:                 0 0 -1px;
 	spacing:                0;
-	background-color:       @main-br;
-	text-color:             @main-fg;
+	background-color:       @br;
+	text-color:             @fg;
 	children:               [ textbox-custom, listview, inputbar ];
 }
 
@@ -31,10 +30,10 @@ textbox-custom {
 	font:                   "CommitMono Nerd Font Bold 12";
 	horizontal-align:       0.5;
 	padding:                2px 0;
-	background-color:       @select-bg;
-	text-color:             @select-fg;
+	background-color:       @active-bg;
+	text-color:             @active-fg;
 	expand:                 false;
-	content:                "󰕰 Apps";
+	content:                "󰱱 Emojis";
 }
 
 /* List */
@@ -42,37 +41,34 @@ textbox-custom {
 listview {
 	border:                 2px 0 0;
 	border-radius:          10px;
-	border-color:           @main-br;
-	lines:                  9;
-	fixed-height:           true;
+	border-color:           @br;
+	lines:                  5;
+	columns:                5;
+	fixed-columns:          true;
 	dynamic:                false;
 	cycle:                  true;
-	margin:                 0 0 -4px;
-	padding:                8px 8px 12px;
-	background-color:       @main-bg;
-}
-
-element-icon {
-	size:                   22px;
-	background-color:       transparent;
+	margin:                 0 0 -24px;
+	padding:                8px;
+	background-color:       @bg-0;
 }
 
 element {
 	padding:                8px;
 	cursor:                 pointer;
 	background-color:       inherit;
-	text-color:             @main-fg;
+	text-color:             @fg;
 }
 
 element selected active,
 element selected normal {
 	border-radius:          8px;
-	background-color:       @select-bg;
-	text-color:             @select-fg;
+	background-color:       @active-bg;
+	text-color:             @active-fg;
 }
 
 element-text {
-	padding:                2px 8px 0 8px;
+	font:                   "CommitMono Nerd Font 18";
+	padding:                10px 0 10px 11px;
 	cursor:                 inherit;
 	background-color:       inherit;
 	text-color:             inherit;
@@ -84,7 +80,7 @@ inputbar {
 	margin:                 -40px 8px 8px;
 	border-radius:          8px;
 	spacing:                inherit;
-	background-color:       @input-bg;
+	background-color:       @bg-1;
 	text-color:             inherit;
 	children:               [ prompt, entry ];
 }
@@ -101,8 +97,4 @@ entry {
 	cursor:                 text;
 	background-color:       inherit;
 	text-color:             inherit;
-}
-
-error-message {
-	enabled:                false;
 }
