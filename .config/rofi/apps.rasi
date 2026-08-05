@@ -4,7 +4,7 @@
 
 configuration {
 	font:                   "CommitMono Nerd Font 12";
-	display-drun:           " ";
+	display-drun:           ">";
 	drun-display-format:    "[<span weight='bold'>{name}</span>] [<span alpha='80%' weight='light'><i>({generic})</i></span>]";
 }
 
@@ -12,44 +12,34 @@ configuration {
 
 window {
 	width:                  375px;
-	border:                 4px;
-	border-radius:          12px;
+	border:                 3px;
 	border-color:           @br;
 	background-color:       @bg-0;
-	children:               [ mainbox ];
-}
-
-mainbox {
-	margin:                 0 0 -1px;
-	spacing:                0;
-	background-color:       @br;
 	text-color:             @fg;
 	children:               [ textbox-custom, listview, inputbar ];
 }
 
 textbox-custom {
+	content:                "APPS";
 	font:                   "CommitMono Nerd Font Bold 12";
+	expand:                 false;
 	horizontal-align:       0.5;
-	padding:                2px 0;
+	padding:                0 0 3px;
 	background-color:       @active-bg;
 	text-color:             @active-fg;
-	expand:                 false;
-	content:                "󰕰 Apps";
 }
 
 /* List */
 
 listview {
-	border:                 2px 0 0;
-	border-radius:          10px;
-	border-color:           @br;
 	lines:                  9;
 	fixed-height:           true;
 	dynamic:                false;
 	cycle:                  true;
-	margin:                 0 0 -4px;
-	padding:                8px 8px 12px;
-	background-color:       @bg-0;
+	margin:                 0 0 -32px;
+	padding:                8px 8px 0;
+	background-color:       inherit;
+	text-color:             inherit;
 }
 
 element-icon {
@@ -59,48 +49,44 @@ element-icon {
 
 element {
 	padding:                8px;
-	cursor:                 pointer;
 	background-color:       inherit;
-	text-color:             @fg;
+	text-color:             inherit;
+	cursor:                 pointer;
 }
 
 element selected active,
 element selected normal {
-	border-radius:          8px;
 	background-color:       @active-bg;
 	text-color:             @active-fg;
 }
 
 element-text {
 	padding:                2px 8px 0 8px;
-	cursor:                 inherit;
 	background-color:       inherit;
 	text-color:             inherit;
+	cursor:                 inherit;
 }
 
 /* Input */
 
 inputbar {
-	margin:                 -40px 8px 8px;
-	border-radius:          8px;
-	spacing:                inherit;
+	margin:                 0 8px 8px;
 	background-color:       @bg-1;
 	text-color:             inherit;
 	children:               [ prompt, entry ];
 }
 
 prompt {
-	padding:                8px 6px 8px 12px;
+	padding:                8px 12px;
 	background-color:       inherit;
 	text-color:             inherit;
 }
 
 entry {
-	placeholder:            "Search";
 	padding:                8px 12px 8px 0;
-	cursor:                 text;
 	background-color:       inherit;
 	text-color:             inherit;
+	cursor:                 text;
 }
 
 error-message {

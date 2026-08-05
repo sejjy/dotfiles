@@ -11,55 +11,44 @@ configuration {
 
 window {
 	width:                  375px;
-	height:                 262px;
-	border:                 4px;
-	border-radius:          12px;
+	height:                 260px;
+	border:                 3px;
 	border-color:           @br;
 	background-color:       @bg-0;
-	children:               [ mainbox ];
-}
-
-mainbox {
-	margin:                 0 0 -1px;
-	spacing:                0;
-	background-color:       @br;
 	text-color:             @fg;
 	children:               [ textbox-custom, listview ];
 }
 
 textbox-custom {
+	content:                "WINDOWS";
 	font:                   "CommitMono Nerd Font Bold 12";
+	expand:                 false;
 	horizontal-align:       0.5;
-	padding:                2px 0;
+	padding:                0 0 3px;
 	background-color:       @active-bg;
 	text-color:             @active-fg;
-	expand:                 false;
-	content:                "󰖯 Windows";
 }
 
 /* List */
 
 listview {
-	border:                 2px 0 0;
-	border-radius:          10px;
-	border-color:           @br;
 	lines:                  6;
 	dynamic:                false;
 	cycle:                  true;
 	padding:                8px;
-	background-color:       @bg-0;
+	background-color:       inherit;
+	text-color:             inherit;
 }
 
 element {
 	padding:                8px;
-	cursor:                 pointer;
 	background-color:       inherit;
-	text-color:             @fg;
+	text-color:             inherit;
+	cursor:                 pointer;
 }
 
 element selected active,
 element selected normal {
-	border-radius:          8px;
 	background-color:       @active-bg;
 	text-color:             @active-fg;
 }
