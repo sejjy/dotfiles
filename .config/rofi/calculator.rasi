@@ -32,7 +32,7 @@ textbox-custom {
 /* Output */
 
 message {
-	padding:                8px;
+	padding:                8px 16px 8px 8px;
 	background-color:       inherit;
 	text-color:             inherit;
 }
