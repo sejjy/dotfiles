@@ -1,9 +1,11 @@
+/* Warning states */
 #memory.warning,
 #cpu.warning,
 #battery.warning {
 	color: @warning;
 }
 
+/* Critical states */
 #temperature.critical,
 #memory.critical,
 #cpu.critical,
@@ -11,6 +13,7 @@
 	color: @critical;
 }
 
+/* Charging state */
 #battery.charging {
 	color: @charging;
 }
@@ -30,6 +33,7 @@
 	color: @hover-fg;
 }
 
+/* Hover states */
 #idle_inhibitor:hover,
 #clock.date:hover,
 #network:hover,
@@ -40,12 +44,6 @@
 #wireplumber:hover {
 	color: @hover-fg;
 }
-
 #custom-power:hover {
 	background-color: @hover-bg;
-}
-
-button:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
 }
