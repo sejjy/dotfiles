@@ -1,4 +1,4 @@
-/* Catppuccin Macchiato */
+/* Palette */
 @define-color rosewater    #f4dbd6;
 @define-color flamingo     #f0c6c6;
 @define-color pink         #f5bde6;
@@ -34,9 +34,9 @@
 @define-color bg-2         @base;
 @define-color bg-3         @surface0;
 @define-color br           @subtext0;
-@define-color shadow       shade(@bg-0, 0.5);
+@define-color shadow       shade(@bg-0, 0.75);
 
-/* State colors */
+/* States */
 @define-color warning      @yellow;
 @define-color critical     @red;
 @define-color charging     @green;

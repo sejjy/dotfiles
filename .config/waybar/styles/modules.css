@@ -1,4 +1,8 @@
-/* Left modules ***************************************************************/
+/* Left modules */
+
+#custom-user {
+	padding: 0 16px;
+}
 
 #workspaces {
 	padding: 0 1px;
@@ -6,7 +10,11 @@
 }
 
 #window {
-	margin: 0 12px;
+	padding: 0 12px;
+	/* Prevent large Unicode characters from increasing the bar height
+	 * https://github.com/Alexays/Waybar/issues/2026
+	 */
+	margin: -50px 0;
 }
 #window label {
 	font-weight: normal;
@@ -14,12 +22,12 @@
 
 #keyboard-state label,
 #language {
-	margin: 0 12px 0 8px;
+	padding: 0 12px 0 8px;
 	font-weight: normal;
 	color: @hover-fg;
 }
 
-/* Center modules *************************************************************/
+/* Center modules */
 
 #temperature {
 	background-color: @bg-1;
@@ -53,19 +61,19 @@
 }
 
 #network {
-	background-color: @bg-1;
 	padding: 0 6px 0 4px;
+	background-color: @bg-1;
 }
 #bluetooth {
-	background-color: @bg-1;
 	padding: 0 5px;
+	background-color: @bg-1;
 }
 #custom-update {
-	background-color: @bg-1;
 	padding: 0 8px 0 2px;
+	background-color: @bg-1;
 }
 
-/* Right modules **************************************************************/
+/* Right modules */
 
 #mpris {
 	padding: 0 12px;

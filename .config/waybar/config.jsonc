@@ -1,8 +1,9 @@
 {
 	"mode": "dock",
+	"position": "top",
 	"layer": "top",
-	"height": 0,
 	"width": 0,
+	"height": 0,
 	"margin": 0,
 	"spacing": 0,
 	"reload_style_on_change": true,
@@ -16,45 +17,58 @@
 
 	"modules-left": [
 		"custom/user",
-		"custom/left#bg1",
+
+		"custom/left#bg-1",
 		"hyprland/workspaces",
-		"custom/right#bg1",
+		"custom/right#bg-1",
+
 		"hyprland/window"
 	],
 
 	"modules-center": [
 		"hyprland/language",
-		"custom/left#bg1",
+
+		"custom/left#bg-1",
 		"temperature",
-		"custom/left#bg2",
+
+		"custom/left#bg-2",
 		"memory",
-		"custom/left#bg3",
+
+		"custom/left#bg-3",
 		"cpu",
 		"custom/left#inverse",
+
 		"custom/left#accent",
 		"custom/distro",
 		"custom/right#accent",
+
 		"custom/right#inverse",
 		"idle_inhibitor",
 		"clock#time",
-		"custom/right#bg3",
+		"custom/right#bg-3",
+
 		"clock#date",
-		"custom/right#bg2",
+		"custom/right#bg-2",
+
 		"network",
 		"bluetooth",
 		"custom/update",
-		"custom/right#bg1"
+		"custom/right#bg-1"
 	],
 
 	"modules-right": [
 		"mpris",
-		"custom/left#bg1",
+
+		"custom/left#bg-1",
 		"group/pulseaudio",
-		"custom/left#bg2",
+
+		"custom/left#bg-2",
 		"backlight",
-		"custom/left#bg3",
+
+		"custom/left#bg-3",
 		"battery",
 		"custom/left#inverse",
+
 		"custom/power"
 	]
 }
