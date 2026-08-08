@@ -76,7 +76,7 @@ alias gp="git push"
 alias gpl="git pull"
 alias gs="git status"
 alias gl="git log"
-alias glo="git log --all --graph --oneline"
+alias glo="git log --graph --oneline"
 
 # neovim
 alias n="nvim"
