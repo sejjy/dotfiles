@@ -22,7 +22,7 @@ main() {
 		fi
 	done
 
-	notify-send "Failed to find a suitable terminal" -i "package-purge"
+	notify-send "Failed to find a terminal emulator" -i "package-purge"
 }
 
 main "$@"
