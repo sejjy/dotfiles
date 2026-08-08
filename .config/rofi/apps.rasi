@@ -4,7 +4,7 @@
 
 configuration {
 	font:                   "CommitMono Nerd Font 12";
-	display-drun:           ">";
+	display-drun:           "";
 	drun-display-format:    "[<span weight='bold'>{name}</span>] [<span alpha='80%' weight='light'><i>({generic})</i></span>]";
 }
 
@@ -83,6 +83,7 @@ prompt {
 }
 
 entry {
+	placeholder:            "Search";
 	padding:                8px 12px 8px 0;
 	background-color:       inherit;
 	text-color:             inherit;

@@ -82,6 +82,7 @@ prompt {
 }
 
 entry {
+	placeholder:            "Search";
 	padding:                8px 12px 8px 0;
 	background-color:       inherit;
 	text-color:             inherit;

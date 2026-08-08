@@ -51,7 +51,7 @@ main() {
 				cliphist list |
 			      rofi -dmenu             \
 			           -display-columns 2 \
-			           -p ">"             \
+			           -p ""             \
 			           -config "$DIR/clipboard.rasi" |
 				cliphist decode |
 				wl-copy

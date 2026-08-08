@@ -4,7 +4,7 @@
 
 configuration {
 	font:                   "CommitMono Nerd Font 12";
-	display-emoji:          ">";
+	display-emoji:          "";
 }
 
 /* Window */
@@ -79,6 +79,7 @@ prompt {
 }
 
 entry {
+	placeholder:            "Search";
 	padding:                8px 12px 8px 0;
 	background-color:       inherit;
 	text-color:             inherit;
