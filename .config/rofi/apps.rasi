@@ -16,6 +16,7 @@ window {
 	border-color:           @br;
 	background-color:       @bg-0;
 	text-color:             @fg;
+	spacing:                0;
 	children:               [ textbox-custom, listview, inputbar ];
 }
 
@@ -36,8 +37,7 @@ listview {
 	fixed-height:           true;
 	dynamic:                false;
 	cycle:                  true;
-	margin:                 0 0 -32px;
-	padding:                8px 8px 0;
+	padding:                8px 8px -30px;
 	background-color:       inherit;
 	text-color:             inherit;
 }
