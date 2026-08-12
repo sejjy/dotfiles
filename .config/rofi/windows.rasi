@@ -4,7 +4,7 @@
 
 configuration {
 	font:                   "CommitMono Nerd Font 12";
-	window-format:          "<span weight='bold'>{c:10}</span> <span alpha='80%' weight='light'><i>{t}</i></span>";
+	window-format:          "<span weight='bold'>{c:10}</span> <span alpha='85%'>{t}</span>";
 }
 
 /* Window */
