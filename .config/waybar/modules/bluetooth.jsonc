@@ -7,7 +7,7 @@
 		"format-disabled": "󰂲",
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty -e ~/.local/bin/bluetooth",
+		"on-click": "kitty -e ~/.local/bin/bluetooth menu",
 		"on-click-right": "~/.local/bin/bluetooth off",
 		"tooltip-format": "Device Addr: {device_address}",
 		"tooltip-format-on": "Bluetooth Disconnected",

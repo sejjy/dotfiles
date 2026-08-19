@@ -24,8 +24,8 @@
 		"min-length": 7,
 		"max-length": 7,
 		"on-click": "~/.local/bin/volume output mute",
-		"on-scroll-up": "~/.local/bin/volume output raise",
-		"on-scroll-down": "~/.local/bin/volume output lower",
+		"on-scroll-up": "~/.local/bin/volume output up",
+		"on-scroll-down": "~/.local/bin/volume output down",
 		"tooltip-format": "<b>Output Device</b>: {desc}"
 	},
 
@@ -36,8 +36,8 @@
 		"min-length": 7,
 		"max-length": 7,
 		"on-click": "~/.local/bin/volume input mute",
-		"on-scroll-up": "~/.local/bin/volume input raise",
-		"on-scroll-down": "~/.local/bin/volume input lower",
+		"on-scroll-up": "~/.local/bin/volume input up",
+		"on-scroll-down": "~/.local/bin/volume input down",
 		"tooltip-format": "<b>Input Device</b>: {desc}"
 	}
 }

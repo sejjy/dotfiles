@@ -1,6 +1,6 @@
 {
 	"custom/update": {
-		"exec": "~/.local/bin/update module",
+		"exec": "~/.local/bin/update data",
 		"return-type": "json",
 		"interval": 3600,
 		"signal": 1,
