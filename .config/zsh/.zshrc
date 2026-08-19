@@ -66,17 +66,7 @@ alias fdf="fd -tf"
 alias fdd="fd -td"
 
 # git
-alias gcl="git clone"
-alias gi="git init"
-alias ga="git add"
-alias gc="git commit"
-alias gb="git branch"
-alias gco="git checkout"
-alias gp="git push"
-alias gpl="git pull"
-alias gs="git status"
-alias gl="git log"
-alias glo="git log --graph --oneline"
+alias gl="git log --graph --oneline"
 
 # neovim
 alias n="nvim"
