@@ -69,7 +69,7 @@ alias fdd="fd -td"
 alias gl="git log --graph --oneline"
 
 # neovim
-alias n="nvim"
+alias e="nvim"
 
 #-------------#
 #   Exports   #
@@ -165,7 +165,7 @@ function command_not_found_handler() {
 
 # ranger
 # https://github.com/ranger/ranger
-function e() {
+function f() {
 	local temp
 	temp=$(mktemp)
 	ranger --choosedir="$temp" "$@"
