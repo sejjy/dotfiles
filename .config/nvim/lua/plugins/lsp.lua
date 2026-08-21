@@ -56,7 +56,7 @@ return {
 					Lua = {
 						completion = { callSnippet = "Replace" },
 						diagnostics = {
-							globals = { "vim" },
+							globals = { "vim", "hl" },
 							disable = { "missing-fields" },
 						},
 						runtime = { version = "LuaJIT" },
