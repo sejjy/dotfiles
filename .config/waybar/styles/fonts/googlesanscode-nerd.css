@@ -1,13 +1,13 @@
 * {
-	font-family: "CommitMono Nerd Font";
+	font-family: "GoogleSansCode Nerd Font";
 	font-size: 13px;
-	font-weight: bold;
+	font-weight: 500;
 }
 
 #workspaces button.active label,
 #workspaces button.focused label,
 #custom-distro {
-	font-size: 18.5px;
+	font-size: 18.75px;
 }
 
 #custom-power {
@@ -18,7 +18,7 @@
 #custom-left.inverse,
 #custom-right,
 #custom-right.inverse {
-	font-size: 22px;
+	font-size: 19.5px;
 }
 
 tooltip label,
