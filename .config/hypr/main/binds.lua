@@ -6,6 +6,8 @@ local scripts  = "~/.local/bin/"
 local super    = "SUPER"
 local terminal = "kitty"
 
+hl.bind(super .. " + CTRL + W", hl.dsp.exec_cmd("pkill waybar || waybar"))
+
 -- Apps
 hl.bind(super .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(super .. " + C", hl.dsp.exec_cmd("code"))
