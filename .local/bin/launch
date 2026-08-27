@@ -59,7 +59,7 @@ main() {
 			pkill rofi ||
 			      rofi -modi emoji             \
 			           -show emoji             \
-			           -emoji-format "{emoji}" \
+			           -emoji-format "{emoji} <span weight='500'>{name}</span>[<span alpha='60%'><i> ({keywords})</i></span>]" \
 			           -kb-accept-alt ""       \
 			           -kb-custom-1 Ctrl+c     \
 			           -kb-secondary-copy ""   \
