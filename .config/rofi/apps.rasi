@@ -3,9 +3,9 @@
 @theme "themes/catppuccin-mocha.rasi"
 
 configuration {
-	font:                   "CommitMono Nerd Font 12";
+	font:                   "GoogleSansCode Nerd Font 11";
 	display-drun:           "";
-	drun-display-format:    "<span weight='bold'>{name}</span> [<span alpha='60%'><i>({generic})</i></span>]";
+	drun-display-format:    "<span weight='500'>{name}</span> [<span alpha='60%'><i>({generic})</i></span>]";
 }
 
 /* Window */
@@ -22,7 +22,7 @@ window {
 
 textbox-custom {
 	content:                "APPS";
-	font:                   "CommitMono Nerd Font Bold 12";
+	font:                   "GoogleSansCode Nerd Font Bold 10";
 	expand:                 false;
 	horizontal-align:       0.5;
 	padding:                0 0 3px;
@@ -37,14 +37,9 @@ listview {
 	fixed-height:           true;
 	dynamic:                false;
 	cycle:                  true;
-	padding:                8px 8px -28px;
+	padding:                8px;
 	background-color:       inherit;
 	text-color:             inherit;
-}
-
-element-icon {
-	size:                   20px;
-	background-color:       transparent;
 }
 
 element {
@@ -61,7 +56,7 @@ element selected normal {
 }
 
 element-text {
-	padding:                1px 8px 0 8px;
+	padding:                0 8px;
 	background-color:       inherit;
 	text-color:             inherit;
 	cursor:                 inherit;

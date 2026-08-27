@@ -34,5 +34,5 @@ hl.env("GDK_SCALE",   1)
 
 -- Misc
 hl.env("MOZ_ENABLE_WAYLAND", 1)
-hl.env("SLURP_ARGS", "-b 00000066 -c ff0000 -d -F 'CommitMono Nerd Font")
+hl.env("SLURP_ARGS", "-b 00000066 -c ff0000 -d -F 'GoogleSansCode Nerd Font'")
 hl.env("_JAVA_AWT_WM_NONREPARENTING", 1)

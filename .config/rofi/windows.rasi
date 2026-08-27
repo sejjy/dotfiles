@@ -3,15 +3,15 @@
 @theme "themes/catppuccin-mocha.rasi"
 
 configuration {
-	font:                   "CommitMono Nerd Font 12";
-	window-format:          "<span weight='bold'>{c:10}</span> <span alpha='85%'>{t}</span>";
+	font:                   "GoogleSansCode Nerd Font 11";
+	window-format:          "<span weight='500'>{c:10}</span> <span alpha='85%'>{t}</span>";
 }
 
 /* Window */
 
 window {
 	width:                  375px;
-	height:                 260px;
+	height:                 265px;
 	border:                 3px;
 	border-color:           @br;
 	background-color:       @bg-0;
@@ -21,7 +21,7 @@ window {
 
 textbox-custom {
 	content:                "WINDOWS";
-	font:                   "CommitMono Nerd Font Bold 12";
+	font:                   "GoogleSansCode Nerd Font Bold 10";
 	expand:                 false;
 	horizontal-align:       0.5;
 	padding:                0 0 3px;

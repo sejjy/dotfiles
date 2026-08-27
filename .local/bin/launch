@@ -30,7 +30,6 @@ main() {
 		app)
 			pkill rofi ||
 			      rofi -show drun       \
-			           -show-icons      \
 			           -disable-history \
 			           -config "$DIR/apps.rasi"
 			;;

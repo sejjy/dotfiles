@@ -77,7 +77,7 @@ hl.config({
 	misc = {
 		disable_hyprland_logo      = true,
 		disable_splash_rendering   = true,
-		font_family                = "CommitMono Nerd Font",
+		font_family                = "GoogleSansCode Nerd Font",
 		force_default_wallpaper    = 0,
 		disable_autoreload         = true,
 		focus_on_activate          = true,

@@ -3,7 +3,7 @@
 @theme "themes/catppuccin-mocha.rasi"
 
 configuration {
-	font:                   "CommitMono Nerd Font 12";
+	font:                   "GoogleSansCode Nerd Font 11";
 	calc-display-format:    "{name}";
 }
 
@@ -21,7 +21,7 @@ window {
 
 textbox-custom {
 	content:                "CALCULATOR";
-	font:                   "CommitMono Nerd Font Bold 12";
+	font:                   "GoogleSansCode Nerd Font Bold 10";
 	expand:                 false;
 	horizontal-align:       0.5;
 	padding:                0 0 3px;

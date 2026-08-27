@@ -3,7 +3,7 @@
 @theme "themes/catppuccin-mocha.rasi"
 
 configuration {
-	font:                   "CommitMono Nerd Font 12";
+	font:                   "GoogleSansCode Nerd Font 11";
 	drun-display-format:    "{name}";
 }
 
@@ -21,7 +21,7 @@ window {
 
 textbox-custom {
 	content:                "CLIPBOARD";
-	font:                   "CommitMono Nerd Font Bold 12";
+	font:                   "GoogleSansCode Nerd Font Bold 10";
 	expand:                 false;
 	horizontal-align:       0.5;
 	padding:                0 0 3px;
@@ -36,14 +36,9 @@ listview {
 	fixed-height:           true;
 	dynamic:                false;
 	cycle:                  true;
-	padding:                8px 8px -26px;
+	padding:                8px;
 	background-color:       inherit;
 	text-color:             inherit;
-}
-
-element-icon {
-	size:                   22px;
-	background-color:       transparent;
 }
 
 element {
