@@ -5,7 +5,7 @@
 configuration {
 	font:                   "GoogleSansCode Nerd Font 11";
 	display-drun:           "";
-	drun-display-format:    "<span weight='500'>{name}</span> [<span alpha='60%'><i>({generic})</i></span>]";
+	drun-display-format:    "<span weight='500'>{name}</span>[<span alpha='60%'><i> ({generic})</i></span>]";
 }
 
 /* Window */
@@ -21,7 +21,7 @@ window {
 }
 
 textbox-custom {
-	content:                "APPS";
+	content:                "APPLICATIONS";
 	font:                   "GoogleSansCode Nerd Font Bold 10";
 	expand:                 false;
 	horizontal-align:       0.5;

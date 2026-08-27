@@ -11,11 +11,12 @@ configuration {
 
 window {
 	width:                  375px;
-	height:                 116px;
+	height:                 112px;
 	border:                 3px;
 	border-color:           @br;
 	background-color:       @bg-0;
 	text-color:             @fg;
+	spacing:                0;
 	children:               [ textbox-custom, message, inputbar ];
 }
 

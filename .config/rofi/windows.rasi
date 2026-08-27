@@ -11,11 +11,11 @@ configuration {
 
 window {
 	width:                  375px;
-	height:                 265px;
 	border:                 3px;
 	border-color:           @br;
 	background-color:       @bg-0;
 	text-color:             @fg;
+	spacing:                0;
 	children:               [ textbox-custom, listview ];
 }
 
@@ -32,7 +32,8 @@ textbox-custom {
 /* List */
 
 listview {
-	lines:                  6;
+	lines:                  9;
+	fixed-height:           true;
 	dynamic:                false;
 	cycle:                  true;
 	padding:                8px;
