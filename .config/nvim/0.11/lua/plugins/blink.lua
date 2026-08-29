@@ -4,38 +4,36 @@ return {
 
 		version = "1.*",
 
-		event = "VeryLazy",
-
 		dependencies = { "rafamadriz/friendly-snippets" },
 
 		opts = {
 			appearance = {
 				nerd_font_variant = "mono",
 				kind_icons = {
-					Text          = " ",
-					Method        = " ",
-					Function      = " ",
-					Constructor   = " ",
-					Field         = " ",
-					Variable      = " ",
-					Class         = " ",
-					Interface     = " ",
-					Module        = " ",
-					Property      = " ",
-					Unit          = " ",
-					Value         = " ",
-					Enum          = " ",
-					Keyword       = " ",
-					Snippet       = " ",
-					Color         = " ",
-					File          = " ",
-					Reference     = " ",
-					Folder        = " ",
-					EnumMember    = " ",
-					Constant      = " ",
-					Struct        = " ",
-					Event         = " ",
-					Operator      = " ",
+					Text = " ",
+					Method = " ",
+					Function = " ",
+					Constructor = " ",
+					Field = " ",
+					Variable = " ",
+					Class = " ",
+					Interface = " ",
+					Module = " ",
+					Property = " ",
+					Unit = " ",
+					Value = " ",
+					Enum = " ",
+					Keyword = " ",
+					Snippet = " ",
+					Color = " ",
+					File = " ",
+					Reference = " ",
+					Folder = " ",
+					EnumMember = " ",
+					Constant = " ",
+					Struct = " ",
+					Event = " ",
+					Operator = " ",
 					TypeParameter = " ",
 				},
 			},
@@ -51,7 +49,7 @@ return {
 					draw = {
 						align_to = "cursor",
 						columns = {
-							{ "label",     "label_description", gap = 1 },
+							{ "label", "label_description", gap = 1 },
 							{ "kind_icon", "kind" },
 						},
 					},
@@ -74,7 +72,7 @@ return {
 			cmdline = { completion = { menu = { auto_show = true } } },
 
 			keymap = {
-				["<A-f>"] = { "snippet_forward",  "fallback" },
+				["<A-f>"] = { "snippet_forward", "fallback" },
 				["<A-b>"] = { "snippet_backward", "fallback" },
 			},
 		},
@@ -82,17 +80,15 @@ return {
 	{
 		"saghen/blink.indent",
 
-		event = "VeryLazy",
-
 		config = function()
 			local indent = require("blink.indent")
 
 			vim.keymap.set("n", "<Leader>ti", function()
 				indent.enable(not indent.is_enabled())
-			end, { desc = "Toggle indent lines" })
+			end, { desc = "Toggle [i]ndent guides" })
 
-			vim.api.nvim_set_hl(0, "BlinkIndent",                 {                 fg = "#21262d" })
-			vim.api.nvim_set_hl(0, "BlinkIndentFocused",          { default = true, fg = "#484f58" })
+			vim.api.nvim_set_hl(0, "BlinkIndent", { fg = "#21262d" })
+			vim.api.nvim_set_hl(0, "BlinkIndentFocused", { default = true, fg = "#484f58" })
 			vim.api.nvim_set_hl(0, "BlinkIndentFocusedUnderline", { default = true, sp = "#484f58", underline = true })
 
 			indent.setup({

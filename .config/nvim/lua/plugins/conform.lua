@@ -8,8 +8,8 @@ return {
 			"<Leader>f",
 			-- Leave visual mode after range format
 			function()
-				require("conform").format({ async = true }, function(err)
-					if not err then
+				require("conform").format({ async = true }, function(e)
+					if not e then
 						local mode = vim.api.nvim_get_mode().mode
 						if vim.startswith(string.lower(mode), "v") then
 							vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
@@ -18,44 +18,22 @@ return {
 				end)
 			end,
 			mode = "",
-			desc = "[f]ormat",
+			desc = "Format code",
 		},
 	},
 
 	opts = {
 		formatters_by_ft = {
-			c = { "clang-format" },
-			css = { "prettierd" },
-			html = { "prettierd" },
+			c          = { "clang-format" },
+			css        = { "prettierd" },
+			html       = { "prettierd" },
 			javascript = { "prettierd" },
-			lua = { "stylua" },
-			markdown = { "prettierd" },
-			python = {
-				"ruff_fix",
-				"ruff_format",
-				"ruff_organize_imports",
-			},
-			sh = { "shfmt" },
+			lua        = { "stylua" },
+			markdown   = { "prettierd" },
+			python     = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+			sh         = { "shfmt" },
 		},
 
 		default_format_opts = { lsp_format = "fallback" },
-
-		formatters = {
-			shfmt = {
-				-- Respect .editorconfig if present
-				args = function(_, ctx)
-					local args = { "-filename", ctx.filename }
-					local config = vim.fs.find(".editorconfig", { path = vim.fn.getcwd(), upward = true, limit = 1 })
-					if not next(config) then
-						vim.list_extend(args, { "--case-indent" })
-					end
-					return args
-				end,
-			},
-		},
 	},
-
-	init = function()
-		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-	end,
 }

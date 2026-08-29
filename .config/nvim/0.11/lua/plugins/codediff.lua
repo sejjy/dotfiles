@@ -4,22 +4,22 @@ return {
 	cmd = "CodeDiff",
 
 	keys = {
-		{ "<Leader>cd", ":CodeDiff<Enter>",         desc = "Code diff" },
-		{ "<Leader>ch", ":CodeDiff history<Enter>", desc = "Code diff history" },
+		{ "<Leader>cd", ":CodeDiff<Enter>", desc = "Code [d]iff" },
+		{ "<Leader>ch", ":CodeDiff history<Enter>", desc = "Code diff [h]istory" },
 	},
 
 	config = function()
 		require("codediff").setup({
 			explorer = {
 				view_mode = "tree",
-				position  = "right",
-				width  = 38,
+				position = "right",
+				width = 38,
 				height = 45,
 				indent_markers = true,
 
 				icons = {
 					folder_closed = "󰉋",
-					folder_open   = "󰝰",
+					folder_open = "󰝰",
 				},
 			},
 		})
@@ -35,7 +35,6 @@ return {
 		})
 
 		-- Hide tabline while CodeDiff is open
-
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "CodeDiffOpen",
 			callback = function()
@@ -43,7 +42,6 @@ return {
 				vim.o.showtabline = 0
 			end,
 		})
-
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "CodeDiffClose",
 			callback = function()

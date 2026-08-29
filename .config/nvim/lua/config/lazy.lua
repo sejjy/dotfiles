@@ -1,14 +1,13 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		error("Error cloning lazy.nvim:\n" .. out)
-	end
-end
-vim.opt.rtp:prepend(lazypath)
+-- This is crazy
+vim.pack.add({
+	{ src = "https://github.com/folke/lazy.nvim", version = "stable" },
+})
 
-require("lazy").setup({ import = "plugins" }, {
+require("lazy").setup({
+	spec = {
+		{ import = "plugins" },
+	},
+
 	install = {
 		missing = true,
 		colorscheme = { "github_dark_default" },
@@ -16,36 +15,36 @@ require("lazy").setup({ import = "plugins" }, {
 
 	checker = {
 		enabled = true,
-		notify = false,
+		notify  = false,
 	},
 
 	change_detection = {
 		enabled = true,
-		notify = false,
+		notify  = false,
 	},
 
 	ui = {
 		border = "single",
 		icons = {
-			cmd = ":",
-			config = " ",
-			debug = " ",
-			event = " ",
-			favorite = " ",
-			ft = " ",
-			init = " ",
-			import = " ",
-			keys = " ",
-			lazy = "",
-			list = { "", "", "", "" },
-			loaded = "",
+			cmd        = ":",
+			config     = " ",
+			debug      = " ",
+			event      = " ",
+			favorite   = " ",
+			ft         = " ",
+			init       = " ",
+			import     = " ",
+			keys       = " ",
+			lazy       = "",
+			list       = { "", "", "", "" },
+			loaded     = "",
 			not_loaded = "",
-			plugin = "󰏗 ",
-			runtime = " ",
-			require = "󰢱 ",
-			source = " ",
-			start = "󰼛 ",
-			task = "󰄬 ",
+			plugin     = "󰏗 ",
+			runtime    = " ",
+			require    = "󰢱 ",
+			source     = " ",
+			start      = "󰼛 ",
+			task       = "󰄬 ",
 		},
 	},
 })

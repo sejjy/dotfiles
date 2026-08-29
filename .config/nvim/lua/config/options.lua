@@ -1,52 +1,35 @@
-vim.g.mapleader = " "
+vim.schedule(function() vim.o.clipboard = "unnamedplus" end)
 
--- Cursor
-vim.opt.guicursor = ""
-vim.opt.scrolloff = 10
-
--- Columns
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
-vim.opt.foldcolumn = "1"
 
--- Folds
-vim.opt.viewoptions:remove("curdir,options")
-vim.opt.viewoptions:append("folds")
+vim.opt.guicursor = ""
+vim.opt.winborder = "single"
+vim.opt.showmode = false
+vim.o.confirm = true
 
--- Indents
+vim.opt.list = true
+vim.opt.listchars = { tab = "  ", trail    = "·", nbsp = "␣" }
+vim.opt.fillchars = { eob = " ",  lastline = " " }
+
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 0
-vim.opt.expandtab = false
-vim.opt.breakindent = true
+vim.opt.wrap = false
 
--- Chars
-vim.opt.list = true
-vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "_" }
-vim.opt.fillchars = { eob = " ", lastline = " " }
-
--- Splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.inccommand = "split"
 
--- Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Timeout
 vim.opt.timeoutlen = 250
-vim.opt.updatetime = 250
 
--- Others
-vim.opt.wrap = false
--- vim.opt.mouse = ""
 vim.opt.mousemodel = "extend"
-vim.opt.showmode = false
-vim.opt.undofile = true
-vim.opt.winborder = "single"
-vim.opt.clipboard = "unnamedplus"
-vim.opt.termguicolors = true
+vim.opt.scrolloff = 10
 
--- Auto-session
-vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.undofile = true
+vim.opt.swapfile = false
+
+vim.opt.sessionoptions = "buffers,curdir,help,options,terminal,winpos,winsize"

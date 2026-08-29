@@ -1,12 +1,10 @@
 return {
-	"FylerOrg/fyler.nvim",
+	"A7Lavinraj/fyler.nvim",
 
 	tag = "v2.0.0",
 
-	cmd = "Fyler",
-
 	keys = {
-		{ "<Leader>e", ":Fyler<Enter>", desc = "File explorer", silent = true },
+		{ "<Leader>e", ":Fyler<Enter>", desc = "[e]xplorer", silent = true },
 	},
 
 	opts = {
@@ -16,16 +14,16 @@ return {
 
 				icon = {
 					directory_collapsed = "󰉋",
-					directory_expanded  = "󰝰",
+					directory_expanded = "󰝰",
 				},
 
 				win = {
 					kind = "float",
 					kinds = {
 						float = {
-							width  = "37",
+							width = "37",
 							height = "90%",
-							top  = "0",
+							top = "0",
 							left = "100%",
 						},
 					},

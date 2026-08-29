@@ -1,8 +1,6 @@
 return {
 	"folke/which-key.nvim",
 
-	event = "VeryLazy",
-
 	opts = {
 		delay = 0,
 
@@ -16,29 +14,28 @@ return {
 		},
 
 		icons = {
+			breadcrumb = "+",
+			separator = "󰁔",
+			ellipsis = "…",
 			mappings = false,
 
-			breadcrumb = "+",
-			separator  = "󰁔",
-			ellipsis   = "…",
-
 			keys = {
-				Up    = "󰁝",
-				Down  = "󰁅",
-				Left  = "󰁍",
+				Up = "󰁝",
+				Down = "󰁅",
+				Left = "󰁍",
 				Right = "󰁔",
 				C = "C-",
 				M = "A-",
 				D = "D-",
 				S = "S-",
-				CR  = "<Enter>",
+				CR = "<Enter>",
 				Esc = "<Esc>",
 				ScrollWheelDown = "󱕐",
-				ScrollWheelUp   = "󱕑",
-				NL    = "<NL>",
-				BS    = "<BS>",
+				ScrollWheelUp = "󱕑",
+				NL = "<NL>",
+				BS = "<BS>",
 				Space = "<Leader>",
-				Tab   = "<Tab>",
+				Tab = "<Tab>",
 			},
 		},
 	},
