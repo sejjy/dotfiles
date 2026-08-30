@@ -77,19 +77,10 @@ return {
 					},
 				},
 			},
-
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
-			},
 		})
 
 		-- Remove outer separator bg color
-		vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "StatusLine",   { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
 	end,
 }

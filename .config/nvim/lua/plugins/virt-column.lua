@@ -11,8 +11,8 @@ return {
 		local group = vim.api.nvim_create_augroup("color-column", { clear = true })
 
 		vim.api.nvim_create_autocmd("InsertEnter", {
-			pattern = "*",
-			group = group,
+			pattern  = "*",
+			group    = group,
 			callback = function()
 				vim.w.column_number = vim.wo.colorcolumn
 				vim.wo.colorcolumn = ""
@@ -20,8 +20,8 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd("InsertLeave", {
-			pattern = "*",
-			group = group,
+			pattern  = "*",
+			group    = group,
 			callback = function()
 				vim.wo.colorcolumn = vim.w.column_number or ""
 			end,

@@ -26,7 +26,7 @@ return {
 
 		-- Disable cursorline in diff windows
 		vim.api.nvim_create_autocmd("User", {
-			pattern = "CodeDiffOpen",
+			pattern  = "CodeDiffOpen",
 			callback = function()
 				for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
 					vim.wo[win].cursorline = false
@@ -37,7 +37,7 @@ return {
 		-- Hide tabline while CodeDiff is open
 
 		vim.api.nvim_create_autocmd("User", {
-			pattern = "CodeDiffOpen",
+			pattern  = "CodeDiffOpen",
 			callback = function()
 				vim.g.codediff_saved_showtabline = vim.o.showtabline
 				vim.o.showtabline = 0
@@ -45,7 +45,7 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd("User", {
-			pattern = "CodeDiffClose",
+			pattern  = "CodeDiffClose",
 			callback = function()
 				if vim.g.codediff_saved_showtabline then
 					vim.o.showtabline = vim.g.codediff_saved_showtabline

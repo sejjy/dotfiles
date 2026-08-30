@@ -34,6 +34,10 @@ return {
 			sh         = { "shfmt" },
 		},
 
+		formatters = {
+			shfmt = { args = { "--case-indent" } },
+		},
+
 		default_format_opts = { lsp_format = "fallback" },
 	},
 }

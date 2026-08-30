@@ -23,7 +23,9 @@ vim.keymap.set("n", "J", "mzJ`z")
 
 vim.keymap.set(  "n",        "x",         [["_x]],  { noremap = true })
 vim.keymap.set({ "n", "x" }, "c",         [["_c]],  { noremap = true })
-vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]],  { desc = "Delete" })
-vim.keymap.set(  "x",        "<Leader>p", [["_dP]], { desc = "Paste" })
+vim.keymap.set({ "n", "v" }, "<Leader>d", [["_d]],  { noremap = true, desc = "Delete" })
+vim.keymap.set(  "x",        "<Leader>p", [["_dP]], { noremap = true, desc = "Paste" })
 
 vim.keymap.set("n", "<Esc>", ":nohlsearch<Enter>", { silent = true })
+
+vim.keymap.set("n", "<Leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Rename" })

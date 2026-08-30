@@ -1,4 +1,6 @@
-vim.schedule(function() vim.o.clipboard = "unnamedplus" end)
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -25,6 +27,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.timeoutlen = 250
+vim.opt.updatetime = 250
 
 vim.opt.mousemodel = "extend"
 vim.opt.scrolloff = 10
@@ -32,4 +35,4 @@ vim.opt.scrolloff = 10
 vim.opt.undofile = true
 vim.opt.swapfile = false
 
-vim.opt.sessionoptions = "buffers,curdir,help,options,terminal,winpos,winsize"
+vim.opt.sessionoptions = "blank,buffers,curdir,help,terminal,winpos,winsize,localoptions"

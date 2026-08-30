@@ -39,8 +39,8 @@ return {
 		}
 
 		vim.api.nvim_create_autocmd("User", {
-			pattern = "LazyDone",
-			once = true,
+			pattern  = "LazyDone",
+			once     = true,
 			callback = function()
 				require("nvim-treesitter").install(parsers)
 			end,
