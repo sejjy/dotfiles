@@ -58,8 +58,8 @@ return {
 		require("snacks").setup(opts)
 
 		local picker = require("snacks").picker
-
 		vim.keymap.set("n",          "<Leader><Leader>", picker.buffers,      { desc = "Search open buffers" })
+		vim.keymap.set("n",          "<Leader>s.",       picker.recent,       { desc = "Search recent files" })
 		vim.keymap.set("n",          "<Leader>sb",       picker.grep_buffers, { desc = "Grep open buffers" })
 		vim.keymap.set("n",          "<Leader>sf",       picker.files,        { desc = "Search files" })
 		vim.keymap.set("n",          "<Leader>sg",       picker.grep,         { desc = "Grep" })
@@ -68,7 +68,6 @@ return {
 		vim.keymap.set("n",          "<Leader>sm",       picker.man,          { desc = "Search man pages" })
 		vim.keymap.set("n",          "<Leader>sr",       picker.resume,       { desc = "Resume search" })
 		vim.keymap.set("n",          "<Leader>su",       picker.undo,         { desc = "Search undo history" })
-		vim.keymap.set("n",          "<Leader>s.",       picker.recent,       { desc = "Search recent files" })
 		vim.keymap.set({ "n", "x" }, "<Leader>sc",       picker.grep_word,    { desc = "Grep current word" })
 	end,
 }

@@ -9,22 +9,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group    = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
 		local buffer = event.buf
+		vim.keymap.set("n", "gd",  vim.lsp.buf.definition,      { buffer = buffer, desc = "Go to definition" })
+		vim.keymap.set("n", "grd", vim.lsp.buf.declaration,     { buffer = buffer, desc = "Go to declaration" })
+		vim.keymap.set("n", "gri", vim.lsp.buf.implementation,  { buffer = buffer, desc = "Go to implementation" })
+		vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, { buffer = buffer, desc = "Go to type definition" })
+		vim.keymap.set("n", "gra", vim.lsp.buf.code_action,     { buffer = buffer, desc = "Code action" })
+		vim.keymap.set("n", "grn", vim.lsp.buf.rename,          { buffer = buffer, desc = "Rename" })
+		vim.keymap.set("n", "K",   vim.lsp.buf.hover,           { buffer = buffer, desc = "Hover" })
 
-		vim.keymap.set("n", "gd",         vim.lsp.buf.definition,       { buffer = buffer, desc = "Go to definition" })
-		vim.keymap.set("n", "grd",        vim.lsp.buf.declaration,      { buffer = buffer, desc = "Go to declaration" })
-		vim.keymap.set("n", "gri",        vim.lsp.buf.implementation,   { buffer = buffer, desc = "Go to implementation" })
-		vim.keymap.set("n", "grn",        vim.lsp.buf.rename,           { buffer = buffer, desc = "Rename" })
-		vim.keymap.set("n", "grr",        vim.lsp.buf.references,       { buffer = buffer, desc = "References" })
-		vim.keymap.set("n", "grt",        vim.lsp.buf.type_definition,  { buffer = buffer, desc = "Go to type definition" })
-		vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action,      { buffer = buffer, desc = "Code action" })
-		vim.keymap.set("n", "<Leader>sd", vim.lsp.buf.document_symbol,  { buffer = buffer, desc = "Document symbols" })
-		vim.keymap.set("n", "<Leader>sw", vim.lsp.buf.workspace_symbol, { buffer = buffer, desc = "Workspace symbols" })
-		vim.keymap.set("n", "K",          vim.lsp.buf.hover,            { buffer = buffer, desc = "Hover" })
+		local picker = require("snacks").picker
+		vim.keymap.set("n", "grr",        picker.lsp_references,        { buffer = buffer, desc = "References" })
+		vim.keymap.set("n", "<Leader>sd", picker.lsp_symbols,           { buffer = buffer, desc = "Document symbols" })
+		vim.keymap.set("n", "<Leader>sw", picker.lsp_workspace_symbols, { buffer = buffer, desc = "Workspace symbols" })
 
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client and client:supports_method("textDocument/documentHighlight", buffer) then
 			local group = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
-
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 				buffer   = buffer,
 				group    = group,
