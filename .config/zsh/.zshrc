@@ -87,7 +87,7 @@ if [[ -f "$ZDOTDIR/.p10k.zsh" ]]; then
 fi
 
 # prompt overrides
-typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION="%%"
+typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION="${USER}@${HOST}"
 typeset -g POWERLEVEL9K_LOCK_ICON=""
 typeset -g POWERLEVEL9K_HOME_ICON=""
 typeset -g POWERLEVEL9K_HOME_SUB_ICON=""

@@ -42,7 +42,6 @@ return {
 					{
 						"diff",
 						symbols = { added = "󰐗 ", removed = "󰍶 ", modified = "󰻂 " },
-						diff_color = { modified = { fg = "#58a6ff" } },
 					},
 				},
 

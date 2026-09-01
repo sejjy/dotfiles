@@ -68,7 +68,7 @@ print_data() {
 
 	if ! updates=$(detect_updates); then
 		icon="󰒑"
-		tooltip="<b>Failed to detect updates</b>"
+		tooltip="<span weight='500'>Failed to detect updates</span>"
 		tooltip+="\nRight-click to retry"
 	else
 		local repo_updates aur_updates
@@ -76,10 +76,10 @@ print_data() {
 
 		if ((repo_updates + aur_updates > 0)); then
 			icon="󰄠"
-			tooltip="<b>Repo</b>: $repo_updates"
+			tooltip="<span weight='500'>Repo</span>: $repo_updates"
 
 			if [[ -n $AUR_HELPER ]]; then
-				tooltip+="\n<b>AUR</b>:  $aur_updates"
+				tooltip+="\n<span weight='500'>AUR</span>:  $aur_updates"
 			fi
 		else
 			icon="󰸟"
