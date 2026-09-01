@@ -1,55 +1,59 @@
 #!/usr/bin/env bash
 #
-# Remove orphaned packages and clear package cache
-#
-# Requires pacman and paru
+# Remove orphaned packages and clear package cache (Arch Linux)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    January 29, 2026
 # License: MIT
 
-FG_RED="\e[31m"
-FG_GREEN="\e[32m"
-FG_BLUE="\e[34m"
-FG_RESET="\e[39m"
+AUR_HELPER=
 
-printf() {
-	command printf "$@" >&2
-}
-
-remove_orphans() {
-	printf "%bRemoving orphaned packages...%b\n" "$FG_BLUE" "$FG_RESET"
-
-	local orph=()
-	mapfile -t orph < <(pacman -Qtdq)
-
-	if ((${#orph[@]})); then
-		sudo pacman -Rns "${orph[@]}" --noconfirm
-	else
-		printf "No orphaned packages found.\n"
-	fi
-}
-
-clear_cache() {
-	printf "\n%bClearing package cache...%b\n" "$FG_BLUE" "$FG_RESET"
-
-	sudo paccache -rk1  # retain only one past version
-	sudo paccache -ruk0 # remove all cached versions of uninstalled packages
-
-	printf "\n%bPruning old AUR package cache...%b\n" "$FG_BLUE" "$FG_RESET"
-
-	if [[ -d "$HOME/.cache/paru" ]]; then
-		paccache -rk1 -c "$HOME/.cache/paru"
-	else
-		printf "%bParu cache directory not found.%b\n" "$FG_RED" "$FG_RESET"
+detect_helper() {
+	if [[ -z $AUR_HELPER ]]; then
+		local helper
+		for helper in aura pakku paru pikaur trizen yay; do
+			if command -v "$helper" >/dev/null; then
+				AUR_HELPER=$helper
+				return 0
+			fi
+		done
 	fi
 }
 
 main() {
-	remove_orphans
-	clear_cache
+	local fg_red=$'\e[31m'
+	local fg_green=$'\e[32m'
+	local fg_blue=$'\e[34m'
+	local fg_reset=$'\e[39m'
 
-	printf "\n%bCleanup complete!%b\n" "$FG_GREEN" "$FG_RESET"
+	printf "%bRemoving orphaned packages...%b\n" "$fg_blue" "$fg_reset"
+
+	local orphans=()
+	mapfile -t orphans < <(pacman -Qtdq)
+
+	if ((${#orphans[@]})); then
+		sudo pacman -Rns "${orphans[@]}" --noconfirm
+	else
+		printf "No orphaned packages found.\n"
+	fi
+
+	printf "\n%bClearing package cache...%b\n" "$fg_blue" "$fg_reset"
+
+	sudo paccache -rk1  # Keep 1 version of each package
+	sudo paccache -ruk0 # Keep 0 version of each uninstalled package
+
+	printf "\n%bClearing AUR package cache...%b\n" "$fg_blue" "$fg_reset"
+
+	local cachedir="$XDG_CACHE_HOME/$AUR_HELPER"
+
+	if [[ -d $cachedir ]]; then
+		paccache -rk1 -c "$cachedir" # Keep 1 version of each AUR package
+	else
+		printf "%b%s cache directory not found.%b\n" "$fg_red" \
+			"${AUR_HELPER^}" "$fg_reset"
+	fi
+
+	printf "\n%bCleanup complete!%b\n" "$fg_green" "$fg_reset"
 }
 
 main

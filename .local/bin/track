@@ -1,15 +1,27 @@
 #!/usr/bin/env bash
 #
-# Display the current track
-# Passing "truncate" truncates the output to $MAXLEN characters
+# Print the current track
 #
-# Requires playerctl
+# Dependencies:
+#   - playerctl
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    July 31, 2025
 # License: MIT
 
-MAXLEN=40
+MAX=40
+
+print_help() {
+	local script=${0##*/}
+
+	cat <<-EOF
+		$script: $script <option>
+		    Print the current track
+
+		    Options:
+		      trunc     Truncate output to [max] characters (default: $MAX)
+	EOF
+}
 
 get() {
 	playerctl metadata --format "{{ markup_escape($1) }}"
@@ -20,23 +32,27 @@ main() {
 	status=$(get "status")
 
 	case $status in
-		Playing) icon='󰐊' ;;
-		Paused)  icon='󰏤' ;;
-		*)       return 0 ;;
+		Playing) icon="󰐊" ;;
+		Paused)  icon="󰏤" ;;
+		*)       return 1 ;;
 	esac
 
-	local title artist track
-
+	local title artist
 	title=$(get "title")
 	artist=$(get "artist")
-	track="$title — $artist"
 
-	if [[ $1 == truncate ]] && ((${#track} > MAXLEN)); then
-		track=${track:0:MAXLEN}
-		track+='…'
+	local track="$title — $artist"
+
+	local option=$1
+	if [[ $option == trunc ]] && ((${#track} > MAX)); then
+		track=${track:0:MAX}
+		track+="…"
+	else
+		print_help >&2
+		return 1
 	fi
 
-	printf "%s %s" "$icon" "$track"
+	printf "%s %s\n" "$icon" "$track"
 }
 
 main "$@"

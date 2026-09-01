@@ -2,39 +2,41 @@
 #
 # Take a screenshot of the target passed
 #
-# Requires grimblast
+# Dependencies:
+#   - grimblast
+#   - libnotify (notify-send)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    January 2, 2025
 # License: MIT
 
-DIR="$HOME/Pictures/screenshots"
-
 usage() {
-	cat <<- EOF
-		USAGE: ${0##*/} {active|area|output|screen}
+	local script=${0##*/}
 
-		Take a screenshot of the target passed
+	cat <<-EOF
+		$script: $script <target>
+		    Take a screenshot of the target passed
 
-		TARGETS:
-		  active    Currently active window
-		  area      Manually select a rectangular region or window
-		  output    Currently active output
-		  screen    Entire screen including all visible outputs
+		    Targets:
+		      active       Currently active window
+		      area         Manually select a rectangular region or window
+		      output       Currently active output
+		      screen       Entire screen including all visible outputs
 	EOF
 }
 
 main() {
-	if [[ ! -d $DIR ]]; then
-		mkdir -p "$DIR"
+	local dir="$HOME/Pictures/screenshots"
+	if [[ ! -d $dir ]]; then
+		mkdir -p "$dir"
 	fi
 
 	local name file
-
 	name="$(date +%Y-%m-%d_%H-%M-%S-%2N).png"
-	file="$DIR/$name"
+	file="$dir/$name"
 
-	case $1 in
+	local option=$1
+	case $option in
 		area)
 			grimblast --freeze copysave "$1" "$file"
 			;;
@@ -52,7 +54,7 @@ main() {
 		return 1
 	fi
 
-	notify-send "$name saved in $DIR" -i "$file"
+	notify-send "$name saved in $dir" --icon "$file"
 }
 
 main "$@"

@@ -2,36 +2,43 @@
 #
 # Rofi launcher
 #
-# Requires cliphist, rofi, rofi-calc, rofi-emoji, and wl-clipboard (wl-copy)
+# Dependencies:
+#   - rofi
+#   - rofi-calc
+#   - rofi-emoji
+#   - cliphist
+#   - wl-clipboard (wl-copy)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    January 3, 2025
 # License: MIT
 
-DIR="$HOME/.config/rofi"
+print_help() {
+	local script=${0##*/}
 
-usage() {
-	cat <<- EOF
-		USAGE: ${0##*/} {app|calc|clip|emoji|win}
+	cat <<-EOF
+		$script: $script <option>
+		    Rofi launcher
 
-		Rofi launcher
-
-		OPTIONS:
-		  app      App launcher
-		  calc     Calculator
-		  clip     Clipboard
-		  emoji    Emoji picker
-		  win      Window switcher
+		    Options:
+		      app       Application launcher
+		      calc      Calculator
+		      clip      Clipboard
+		      emoji     Emoji picker
+		      win       Window switcher
 	EOF
 }
 
 main() {
-	case $1 in
+	local dir="$HOME/.config/rofi"
+
+	local option=$1
+	case $option in
 		app)
 			pkill rofi ||
 			      rofi -show drun       \
 			           -disable-history \
-			           -config "$DIR/apps.rasi"
+			           -config "$dir/apps.rasi"
 			;;
 		calc)
 			pkill rofi ||
@@ -43,7 +50,7 @@ main() {
 			           -kb-accept-custom "Return"                  \
 			           -terse                                      \
 					   -calc-command "printf '{result}' | wl-copy" \
-			           -config "$DIR/calculator.rasi"
+			           -config "$dir/calculator.rasi"
 			;;
 		clip)
 			pkill rofi ||
@@ -51,27 +58,27 @@ main() {
 			      rofi -dmenu             \
 			           -display-columns 2 \
 			           -p ""             \
-			           -config "$DIR/clipboard.rasi" |
+			           -config "$dir/clipboard.rasi" |
 				cliphist decode |
 				wl-copy
 			;;
 		emoji)
 			pkill rofi ||
-			      rofi -modi emoji             \
-			           -show emoji             \
+			      rofi -modi emoji           \
+			           -show emoji           \
 			           -emoji-format "<span font='12.5'>{emoji}</span> <span weight='500'>{name}</span>[<span alpha='60%'><i> ({keywords})</i></span>]" \
-			           -kb-accept-alt ""       \
-			           -kb-custom-1 Ctrl+c     \
-			           -kb-secondary-copy ""   \
-			           -config "$DIR/emojis.rasi"
+			           -kb-accept-alt ""     \
+			           -kb-custom-1 Ctrl+c   \
+			           -kb-secondary-copy "" \
+			           -config "$dir/emojis.rasi"
 			;;
 		win)
 			pkill rofi ||
 			      rofi -show window \
-			           -config "$DIR/windows.rasi"
+			           -config "$dir/windows.rasi"
 			;;
 		*)
-			usage >&2
+			print_help >&2
 			return 1
 			;;
 	esac

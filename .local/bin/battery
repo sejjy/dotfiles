@@ -1,27 +1,35 @@
 #!/usr/bin/env bash
 #
-# Send a notification when the battery state changes
+# Notify when the battery state changes
+#
+# Dependencies:
+#   - upower
+#   - libnotify (notify-send)
 #
 # Reference:
 # https://github.com/ericmurphyxyz/dotfiles/blob/master/.local/bin/battery-charging
 #
-# Add the following rules to /etc/udev/rules.d/60-power.rules (replace <user>
-# with your user):
+# Add the following rules to /etc/udev/rules.d/60-power.rules
+# (replace USER with your username):
 #
-# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/su <user> --command '~/.local/bin/battery charging'"
-# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/su <user> --command '~/.local/bin/battery discharging'"
+# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/su USER -c '~/.local/bin/battery charging'"
+# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/su USER -c '~/.local/bin/battery discharging'"
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 15, 2025
 # License: MIT
 
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+export DISPLAY=:0
 
-usage() {
-	cat <<- EOF
-		USAGE: ${0##*/} {charging|discharging}
+print_help() {
+	local script=${0##*/}
 
-		See ${0/$HOME/'~'} for more information
+	cat <<-EOF
+		$script: $script {charging | discharging}
+		    Notify when the battery state changes
+
+		    See ${0/$HOME/'~'} for more information
 	EOF
 }
 
@@ -29,27 +37,27 @@ main() {
 	local state=$1
 
 	if [[ ! $state =~ ^(dis)?charging$ ]]; then
-		usage >&2
-		exit 1
+		print_help >&2
+		return 1
 	fi
 
-	local path level
-
+	local path
 	path=$(upower -e | grep -m 1 "BAT")
+
+	local level
 	level=$(upower -i "$path" | awk '/percentage:/ {print $2}')
 	level=${level%\%}
 
-	local floor icon
+	local floor=$((level / 10 * 10))
 
-	floor=$((level / 10 * 10))
+	local icon
 	printf -v icon "battery-%03d" $floor
-
 	if [[ $state == charging ]]; then
 		icon+="-charging"
 	fi
 
-	notify-send "Battery ${state^} ($level%)" -i "$icon" \
-		-h string:x-canonical-private-synchronous:battery
+	notify-send "Battery ${state^} (${level}%)" --icon "$icon" \
+		--hint string:x-canonical-private-synchronous:battery
 }
 
 main "$@"
