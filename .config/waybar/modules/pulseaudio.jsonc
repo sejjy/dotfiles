@@ -26,7 +26,7 @@
 		"on-click": "~/.local/bin/volume output mute",
 		"on-scroll-up": "~/.local/bin/volume output up",
 		"on-scroll-down": "~/.local/bin/volume output down",
-		"tooltip-format": "<span weight='500'>Output Device</span>: {desc}"
+		"tooltip-format": "Output Device: {desc}"
 	},
 
 	"pulseaudio#input": {
@@ -38,6 +38,6 @@
 		"on-click": "~/.local/bin/volume input mute",
 		"on-scroll-up": "~/.local/bin/volume input up",
 		"on-scroll-down": "~/.local/bin/volume input down",
-		"tooltip-format": "<span weight='500'>Input Device</span>: {desc}"
+		"tooltip-format": "Input Device: {desc}"
 	}
 }
