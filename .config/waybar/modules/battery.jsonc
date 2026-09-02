@@ -9,8 +9,8 @@
 			"warning": 20,
 			"critical": 10
 		},
-		"max-length": 7,
-		"min-length": 7,
+		"max-length": 8,
+		"min-length": 8,
 		"tooltip-format": "<span weight='500'>Battery Discharging</span>: {time}",
 		"tooltip-format-charging": "<span weight='500'>Battery Charging</span>: {time}",
 		"format-time": "{H}h {M}m",

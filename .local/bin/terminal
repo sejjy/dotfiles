@@ -15,8 +15,8 @@
 
 main() {
 	# shellcheck disable=2153
-	for terminal in $TERMINAL alacritty aterm Eterm foot ghostty kitty konsole \
-		lxterminal mate-terminal qterminal roxterm rxvt st terminology urxvt   \
+	for terminal in $TERMINAL alacritty aterm foot ghostty kitty konsole     \
+		lxterminal mate-terminal qterminal roxterm rxvt st terminology urxvt \
 		uxterm wezterm x-terminal-emulator xfce4-terminal.wrapper xterm
 	do
 		if command -v "$terminal" &>/dev/null; then
