@@ -10,7 +10,7 @@
 # Date:    January 2, 2025
 # License: MIT
 
-usage() {
+print_help() {
 	local script=${0##*/}
 
 	cat <<-EOF
@@ -44,7 +44,7 @@ main() {
 			grimblast copysave "$1" "$file"
 			;;
 		*)
-			usage >&2
+			print_help >&2
 			return 1
 			;;
 	esac
