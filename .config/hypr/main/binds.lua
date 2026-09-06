@@ -36,9 +36,9 @@ hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd(scripts .. "volume input mute"),
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd(scripts .. "volume output mute"), { locked = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(scripts .. "volume output down"), { locked = true })
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(scripts .. "volume output up"),   { locked = true })
-hl.bind(super .. " + ALT + M",  hl.dsp.exec_cmd(scripts .. "volume output mute"), { locked = true })
-hl.bind(super .. " + ALT + L",  hl.dsp.exec_cmd(scripts .. "volume output down"), { locked = true })
-hl.bind(super .. " + ALT + R",  hl.dsp.exec_cmd(scripts .. "volume output up"),   { locked = true })
+hl.bind(super .. " + ALT + M",  hl.dsp.exec_cmd(scripts .. "volume output mute"), { locked = true, repeating = true })
+hl.bind(super .. " + ALT + L",  hl.dsp.exec_cmd(scripts .. "volume output down"), { locked = true, repeating = true })
+hl.bind(super .. " + ALT + R",  hl.dsp.exec_cmd(scripts .. "volume output up"),   { locked = true, repeating = true })
 
 -- Media
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
@@ -49,8 +49,8 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 -- Brightness
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(scripts .. "backlight down"), { locked = true })
 hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd(scripts .. "backlight up"),   { locked = true })
-hl.bind(super .. " + ALT + D",   hl.dsp.exec_cmd(scripts .. "backlight down"), { locked = true })
-hl.bind(super .. " + ALT + U",   hl.dsp.exec_cmd(scripts .. "backlight up"),   { locked = true })
+hl.bind(super .. " + ALT + D",   hl.dsp.exec_cmd(scripts .. "backlight down"), { locked = true, repeating = true })
+hl.bind(super .. " + ALT + U",   hl.dsp.exec_cmd(scripts .. "backlight up"),   { locked = true, repeating = true })
 
 -- Screenshot
 hl.bind("Print",                hl.dsp.exec_cmd(scripts .. "screenshot area"),   { locked = true })
@@ -59,9 +59,10 @@ hl.bind(super .. " + Print",    hl.dsp.exec_cmd(scripts .. "screenshot screen"),
 hl.bind(super .. " + CTRL + P", hl.dsp.exec_cmd(scripts .. "screenshot screen"), { locked = true })
 hl.bind(super .. " + ALT + P",  hl.dsp.exec_cmd(scripts .. "screenshot active"), { locked = true })
 
+-- TODO: update
 -- Zoom
-hl.bind(super .. " + SHIFT + mouse:272", hl.dsp.exec_cmd(scripts .. "zoom 0.5"))
-hl.bind(super .. " + SHIFT + mouse:273", hl.dsp.exec_cmd(scripts .. "zoom reset"))
+-- hl.bind(super .. " + SHIFT + mouse:272", hl.dsp.exec_cmd(scripts .. "zoom 0.5"))
+-- hl.bind(super .. " + SHIFT + mouse:273", hl.dsp.exec_cmd(scripts .. "zoom reset"))
 
 ----         ----
 --   Windows   --
@@ -85,10 +86,10 @@ end)
 
 -- Resize
 hl.bind(super .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-hl.bind(super .. " + SHIFT + H", hl.dsp.window.resize({ x = -20, y =   0, relative = true }))
-hl.bind(super .. " + SHIFT + J", hl.dsp.window.resize({ x =   0, y =  20, relative = true }))
-hl.bind(super .. " + SHIFT + K", hl.dsp.window.resize({ x =   0, y = -20, relative = true }))
-hl.bind(super .. " + SHIFT + L", hl.dsp.window.resize({ x =  20, y =   0, relative = true }))
+hl.bind(super .. " + SHIFT + H", hl.dsp.window.resize({ x = -20, y =   0, relative = true }), { repeating = true })
+hl.bind(super .. " + SHIFT + J", hl.dsp.window.resize({ x =   0, y =  20, relative = true }), { repeating = true })
+hl.bind(super .. " + SHIFT + K", hl.dsp.window.resize({ x =   0, y = -20, relative = true }), { repeating = true })
+hl.bind(super .. " + SHIFT + L", hl.dsp.window.resize({ x =  20, y =   0, relative = true }), { repeating = true })
 
 -- Close
 hl.bind(super .. " + Q", hl.dsp.window.close())
