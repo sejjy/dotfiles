@@ -18,14 +18,14 @@ print_help() {
 
 	cat <<-EOF
 		$script: $script <option>
-		    Rofi launcher
+			Rofi launcher
 
-		    Options:
-		      app       Application launcher
-		      calc      Calculator
-		      clip      Clipboard
-		      emoji     Emoji picker
-		      win       Window switcher
+			Options:
+			  app       Application launcher
+			  calc      Calculator
+			  clip      Clipboard
+			  emoji     Emoji picker
+			  win       Window switcher
 	EOF
 }
 
@@ -36,46 +36,47 @@ main() {
 	case $option in
 		app)
 			pkill rofi ||
-			      rofi -show drun       \
-			           -disable-history \
-			           -config "$dir/apps.rasi"
+				  rofi -show drun       \
+				       -disable-history \
+				       -config "$dir/apps.rasi"
 			;;
 		calc)
 			pkill rofi ||
-			      rofi -show calc                                  \
-			           -modi calc                                  \
-			           -hint-welcome ""                            \
-			           -hint-result ""                             \
-			           -kb-accept-entry ""                         \
-			           -kb-accept-custom "Return"                  \
-			           -terse                                      \
-					   -calc-command "printf '{result}' | wl-copy" \
-			           -config "$dir/calculator.rasi"
+				  rofi -show calc                                  \
+				       -modi calc                                  \
+				       -hint-welcome ""                            \
+				       -hint-result ""                             \
+				       -kb-accept-entry ""                         \
+				       -kb-accept-custom "Return"                  \
+				       -no-bold                                    \
+				       -terse                                      \
+				       -calc-command "printf '{result}' | wl-copy" \
+				       -config "$dir/calculator.rasi"
 			;;
 		clip)
 			pkill rofi ||
 				cliphist list |
-			      rofi -dmenu             \
-			           -display-columns 2 \
-			           -p ""             \
-			           -config "$dir/clipboard.rasi" |
+				  rofi -dmenu             \
+				       -display-columns 2 \
+				       -p ""             \
+				       -config "$dir/clipboard.rasi" |
 				cliphist decode |
 				wl-copy
 			;;
 		emoji)
 			pkill rofi ||
-			      rofi -modi emoji           \
-			           -show emoji           \
-			           -emoji-format "<span font='12.5'>{emoji}</span> <span weight='500'>{name}</span>[<span alpha='60%'><i> ({keywords})</i></span>]" \
-			           -kb-accept-alt ""     \
-			           -kb-custom-1 Ctrl+c   \
-			           -kb-secondary-copy "" \
-			           -config "$dir/emojis.rasi"
+				  rofi -modi emoji           \
+				       -show emoji           \
+				       -emoji-format "<span font='12.5'>{emoji}</span> <span weight='500'>{name}</span>[<span alpha='60%'><i> ({keywords})</i></span>]" \
+				       -kb-accept-alt ""     \
+				       -kb-custom-1 Ctrl+c   \
+				       -kb-secondary-copy "" \
+				       -config "$dir/emojis.rasi"
 			;;
 		win)
 			pkill rofi ||
-			      rofi -show window \
-			           -config "$dir/windows.rasi"
+				  rofi -show window \
+				       -config "$dir/windows.rasi"
 			;;
 		*)
 			print_help >&2

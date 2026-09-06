@@ -9,7 +9,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.guicursor = ""
 vim.opt.winborder = "single"
 vim.opt.showmode = false
-vim.o.confirm = true
 
 vim.opt.list = true
 vim.opt.listchars = { tab = "  ", trail    = "·", nbsp = "␣" }
@@ -35,4 +34,4 @@ vim.opt.scrolloff = 10
 vim.opt.undofile = true
 vim.opt.swapfile = false
 
-vim.opt.sessionoptions = "blank,buffers,curdir,help,terminal,winpos,winsize,localoptions"
+vim.opt.sessionoptions = "buffers,curdir,help,localoptions,options,terminal,winsize"
