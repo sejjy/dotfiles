@@ -10,7 +10,7 @@
 #   - wl-clipboard (wl-copy)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
-# Date:    January 3, 2025
+# Date:    January 03, 2025
 # License: MIT
 
 print_help() {

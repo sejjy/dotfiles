@@ -7,7 +7,7 @@
 #   - libnotify (notify-send)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
-# Date:    January 2, 2025
+# Date:    January 02, 2025
 # License: MIT
 
 print_help() {
