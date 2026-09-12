@@ -86,10 +86,10 @@ end)
 
 -- Resize
 hl.bind(super .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-hl.bind(super .. " + SHIFT + H", hl.dsp.window.resize({ x = -20, y =   0, relative = true }), { repeating = true })
-hl.bind(super .. " + SHIFT + J", hl.dsp.window.resize({ x =   0, y =  20, relative = true }), { repeating = true })
-hl.bind(super .. " + SHIFT + K", hl.dsp.window.resize({ x =   0, y = -20, relative = true }), { repeating = true })
-hl.bind(super .. " + SHIFT + L", hl.dsp.window.resize({ x =  20, y =   0, relative = true }), { repeating = true })
+hl.bind(super .. " + SHIFT + H", hl.dsp.window.resize({ x = -30, y =   0, relative = true }), { repeating = true })
+hl.bind(super .. " + SHIFT + J", hl.dsp.window.resize({ x =   0, y =  30, relative = true }), { repeating = true })
+hl.bind(super .. " + SHIFT + K", hl.dsp.window.resize({ x =   0, y = -30, relative = true }), { repeating = true })
+hl.bind(super .. " + SHIFT + L", hl.dsp.window.resize({ x =  30, y =   0, relative = true }), { repeating = true })
 
 -- Close
 hl.bind(super .. " + Q", hl.dsp.window.close())
@@ -113,9 +113,6 @@ end
 hl.bind(super .. " + CTRL + ALT + H", hl.dsp.window.move({ workspace = "r-1" }))
 hl.bind(super .. " + CTRL + ALT + L", hl.dsp.window.move({ workspace = "r+1" }))
 
--- Move to first empty
-hl.bind(super .. " + SHIFT + J", hl.dsp.window.move({ workspace = "empty" }))
-
 ----            ----
 --   Workspaces   --
 ----            ----
@@ -129,9 +126,6 @@ end
 -- Switch to relative
 hl.bind(super .. " + CTRL + H", hl.dsp.focus({ workspace = "r-1" }))
 hl.bind(super .. " + CTRL + L", hl.dsp.focus({ workspace = "r+1" }))
-
--- Switch to first empty
-hl.bind(super .. " + CTRL + J", hl.dsp.focus({ workspace = "empty" }))
 
 -- Cycle through existing
 hl.bind(super .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
