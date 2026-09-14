@@ -44,13 +44,12 @@ main() {
 			pkill rofi ||
 				  rofi -show calc                                  \
 				       -modi calc                                  \
-				       -hint-welcome ""                            \
-				       -hint-result ""                             \
-				       -kb-accept-entry ""                         \
-				       -kb-accept-custom "Return"                  \
-				       -no-bold                                    \
-				       -terse                                      \
 				       -calc-command "printf '{result}' | wl-copy" \
+				       -hint-result ""                             \
+				       -hint-welcome ""                            \
+				       -no-bold                                    \
+				       -reuse-result                               \
+				       -terse                                      \
 				       -config "$dir/calculator.rasi"
 			;;
 		clip)

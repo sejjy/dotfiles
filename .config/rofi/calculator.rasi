@@ -10,7 +10,7 @@ configuration {
 
 window {
 	width:                  375px;
-	height:                 112px;
+	height:                 116px;
 	border:                 3px;
 	border-color:           @br;
 	background-color:       @bg-0;
