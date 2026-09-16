@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "bash", "c" },
+	pattern = { "bash", "c", "sh" },
 	callback = function(args)
 		-- local treesitter = require("nvim-treesitter")
 		-- local lang = vim.treesitter.language.get_lang(args.match)
