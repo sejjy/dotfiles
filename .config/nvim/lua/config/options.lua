@@ -11,8 +11,8 @@ vim.opt.winborder = "single"
 vim.opt.showmode = false
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "  ", trail    = "·", nbsp = "␣" }
-vim.opt.fillchars = { eob = " ",  lastline = " " }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+vim.opt.fillchars = { eob = " ", lastline = " " }
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 0

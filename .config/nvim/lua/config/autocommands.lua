@@ -1,12 +1,12 @@
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group    = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank()
 	end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-	group    = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(args)
 		local buffer = args.buf
 		vim.keymap.set("n", "gd",  vim.lsp.buf.definition,      { buffer = buffer, desc = "Go to definition" })
@@ -26,19 +26,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client and client:supports_method("textDocument/documentHighlight", buffer) then
 			local group = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-				buffer   = buffer,
-				group    = group,
+				buffer = buffer,
+				group = group,
 				callback = vim.lsp.buf.document_highlight,
 			})
 
 			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-				buffer   = buffer,
-				group    = group,
+				buffer = buffer,
+				group = group,
 				callback = vim.lsp.buf.clear_references,
 			})
 
 			vim.api.nvim_create_autocmd("LspDetach", {
-				group    = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
+				group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
 				callback = function(args2)
 					vim.lsp.buf.clear_references()
 					vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = args2.buf })
@@ -50,8 +50,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- https://github.com/folke/lazy.nvim/issues/1951
 vim.api.nvim_create_autocmd("FileType", {
-	pattern  = "lazy_backdrop",
-	group    = vim.api.nvim_create_augroup("lazy-backdrop", { clear = true }),
+	pattern = "lazy_backdrop",
+	group = vim.api.nvim_create_augroup("lazy-backdrop", { clear = true }),
 	callback = function(args)
 		local win = vim.fn.win_findbuf(args.buf)[1]
 		vim.api.nvim_win_set_config(win, { border = "none" })
@@ -59,8 +59,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern  = "mason",
-	group    = vim.api.nvim_create_augroup("mason-cursorline", { clear = true }),
+	pattern = "mason",
+	group = vim.api.nvim_create_augroup("mason-cursorline", { clear = true }),
 	callback = function()
 		vim.wo.cursorline = false
 	end,

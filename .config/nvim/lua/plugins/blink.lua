@@ -51,7 +51,7 @@ return {
 					draw = {
 						align_to = "cursor",
 						columns = {
-							{ "label",     "label_description", gap = 1 },
+							{ "label", "label_description", gap = 1 },
 							{ "kind_icon", "kind" },
 						},
 					},
@@ -74,7 +74,7 @@ return {
 			cmdline = { completion = { menu = { auto_show = true } } },
 
 			keymap = {
-				["<A-f>"] = { "snippet_forward",  "fallback" },
+				["<A-f>"] = { "snippet_forward", "fallback" },
 				["<A-b>"] = { "snippet_backward", "fallback" },
 			},
 		},
@@ -91,8 +91,8 @@ return {
 				indent.enable(not indent.is_enabled())
 			end, { desc = "Toggle indent lines" })
 
-			vim.api.nvim_set_hl(0, "BlinkIndent",                 {                 fg = "#21262d" })
-			vim.api.nvim_set_hl(0, "BlinkIndentFocused",          { default = true, fg = "#484f58" })
+			vim.api.nvim_set_hl(0, "BlinkIndent", { fg = "#21262d" })
+			vim.api.nvim_set_hl(0, "BlinkIndentFocused", { default = true, fg = "#484f58" })
 			vim.api.nvim_set_hl(0, "BlinkIndentFocusedUnderline", { default = true, sp = "#484f58", underline = true })
 
 			indent.setup({

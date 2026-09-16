@@ -8,7 +8,7 @@ return {
 	},
 
 	opts = {
-		suppressed_dirs = { "/", "~/", "~/Downloads" },
+		suppressed_dirs = { "/", "~/", "~/Documents", "~/Downloads" },
 
 		session_lens = {
 			picker_opts = {

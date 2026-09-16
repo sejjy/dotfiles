@@ -22,6 +22,6 @@ return {
 		local float = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
 
 		vim.api.nvim_set_hl(0, "FloatBorder", { bg = float.bg, fg = "#484f58" })
-		vim.api.nvim_set_hl(0, "FloatTitle",  { bg = float.bg })
+		vim.api.nvim_set_hl(0, "FloatTitle", { bg = float.bg })
 	end,
 }

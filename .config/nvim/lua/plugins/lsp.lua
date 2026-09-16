@@ -18,7 +18,7 @@ return {
 			settings = {
 				java = {
 					project = {
-						outputPath  =   "bin",
+						outputPath = "bin",
 						sourcePaths = { "src" },
 					},
 				},
@@ -47,11 +47,11 @@ return {
 
 		require("mason").setup({
 			ui = {
-				width  = 0.8,
+				width = 0.8,
 				height = 0.8,
 				icons = {
-					package_installed   = "",
-					package_pending     = "",
+					package_installed = "",
+					package_pending = "",
 					package_uninstalled = "",
 				},
 			},
@@ -69,7 +69,7 @@ return {
 				"lua_ls",
 				-- "tailwindcss",
 				"ts_ls",
-			}
+			},
 		})
 
 		vim.schedule(function()
@@ -82,7 +82,7 @@ return {
 					"shellcheck",
 					"shfmt",
 					"stylua",
-				}
+				},
 			})
 		end)
 	end,

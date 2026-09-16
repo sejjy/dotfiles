@@ -16,16 +16,16 @@ return {
 
 				icon = {
 					directory_collapsed = "󰉋",
-					directory_expanded  = "󰝰",
+					directory_expanded = "󰝰",
 				},
 
 				win = {
 					kind = "float",
 					kinds = {
 						float = {
-							width  = "37",
+							width = "37",
 							height = "90%",
-							top  = "0",
+							top = "0",
 							left = "100%",
 						},
 					},
