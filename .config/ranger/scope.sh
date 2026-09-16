@@ -36,10 +36,10 @@ PV_WIDTH="${2}"         # Width of the preview pane (number of fitting character
 ## PV_HEIGHT is provided for convenience and unused
 PV_HEIGHT="${3}"        # Height of the preview pane (number of fitting characters)
 IMAGE_CACHE_PATH="${4}" # Full path that should be used to cache image preview
-PV_IMAGE_ENABLED="${5}" # 'True' if image previews are enabled, 'False' otherwise.
+PV_IMAGE_ENABLED="${5}" # "True" if image previews are enabled, "False" otherwise.
 
 FILE_EXTENSION="${FILE_PATH##*.}"
-FILE_EXTENSION_LOWER="$(printf "%s" "${FILE_EXTENSION}" | tr '[:upper:]' '[:lower:]')"
+FILE_EXTENSION_LOWER="$(printf "%s" "${FILE_EXTENSION}" | tr "[:upper:]" "[:lower:]")"
 
 ## Settings
 HIGHLIGHT_SIZE_MAX=262143 # 256KiB
@@ -153,7 +153,7 @@ handle_image() {
 		## Image
 		image/*)
 			local orientation
-			orientation="$(identify -format '%[EXIF:Orientation]\n' -- "${FILE_PATH}")"
+			orientation="$(identify -format "%[EXIF:Orientation]\n" -- "${FILE_PATH}")"
 			## If orientation data is present and the image actually
 			## needs rotating ("1" means no rotation)...
 			if [[ -n "$orientation" && "$orientation" != 1 ]]; then
@@ -241,7 +241,7 @@ handle_image() {
 		# 		(m.guess_type(l[:-1])[0] or '').startswith('image/') ]" |
 		# 		sort -V | head -n 1)
 		# 	[ "$fn" = "" ] && return
-		# 	[ "$bsd" ] && fn=$(printf '%b' "$fn")
+		# 	[ "$bsd" ] && fn=$(printf "%b" "$fn")
 		#
 		# 	[ "$tar" ] && tar --extract --to-stdout \
 		# 		--file "${FILE_PATH}" -- "$fn" >"${IMAGE_CACHE_PATH}" && exit 6
@@ -317,11 +317,11 @@ handle_mime() {
 				exit 2
 			fi
 			if [[ "$(tput colors)" -ge 256 ]]; then
-				local pygmentize_format='terminal256'
-				local highlight_format='xterm256'
+				local pygmentize_format="terminal256"
+				local highlight_format="xterm256"
 			else
-				local pygmentize_format='terminal'
-				local highlight_format='ansi'
+				local pygmentize_format="terminal"
+				local highlight_format="ansi"
 			fi
 			env HIGHLIGHT_OPTIONS="${HIGHLIGHT_OPTIONS}" highlight \
 				--out-format="${highlight_format}" \
@@ -359,12 +359,12 @@ handle_mime() {
 }
 
 handle_fallback() {
-	echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" && exit 5
+	echo "----- File Type Classification -----" && file --dereference --brief -- "${FILE_PATH}" && exit 5
 	exit 1
 }
 
 MIMETYPE="$(file --dereference --brief --mime-type -- "${FILE_PATH}")"
-if [[ "${PV_IMAGE_ENABLED}" == 'True' ]]; then
+if [[ "${PV_IMAGE_ENABLED}" == "True" ]]; then
 	handle_image "${MIMETYPE}"
 fi
 handle_extension
