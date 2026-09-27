@@ -30,6 +30,12 @@ hl.window_rule({ match = { class = "mpv" }, float = true, center = true, size = 
 hl.window_rule({ match = { class = "com.obsproject.Studio", title = "Filters.*" }, float = true, center = true, size = {  810, 520 } })
 hl.window_rule({ match = { class = "com.obsproject.Studio", title = "Settings" },  float = true, center = true, size = { 1120, 760 } })
 
+---- Workarounds
+-- Float "raylib" windows
+hl.window_rule({ match = { class = "", title = "raylib" }, float = true, center = true })
+-- https://github.com/kovidgoyal/kitty/issues/10442
+hl.window_rule({ match = { class = "kitty" }, fullscreen_state = "0 0" })
+
 ----        ----
 --   Layers   --
 ----        ----
