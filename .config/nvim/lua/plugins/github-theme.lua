@@ -31,6 +31,9 @@ return {
 		vim.api.nvim_set_hl(0, "@string.escape.c",     { bold = false })
 		vim.api.nvim_set_hl(0, "@type.builtin.c",      { link = "@variable" })
 
+		-- Markdown
+		vim.api.nvim_set_hl(0, "@markup.raw", { italic = false })
+
 		local float = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
 
 		vim.api.nvim_set_hl(0, "FloatBorder", { bg = float.bg, fg = "#484f58" })
