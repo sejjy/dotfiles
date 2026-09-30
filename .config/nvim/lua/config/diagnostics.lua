@@ -20,3 +20,6 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo",  { undercurl = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint",  { undercurl = true })
 
 vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics" })
+vim.keymap.set("n", "<Leader>td", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
