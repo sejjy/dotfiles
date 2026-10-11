@@ -64,6 +64,7 @@
 }
 
 .tab-close-button,
+.tab-icon-overlay,
 .zen-workspace-close-unpinned-tabs-button,
 #zen-toggle-compact-mode {
 	display: none !important;
