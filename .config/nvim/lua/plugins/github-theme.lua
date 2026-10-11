@@ -16,7 +16,7 @@ return {
 		vim.api.nvim_set_hl(0, "@function.call.bash",     { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@keyword.directive.bash", { link = "@comment.bash" })
 		vim.api.nvim_set_hl(0, "@label.bash",             { link = "@keyword.bash" })
-		vim.api.nvim_set_hl(0, "@operator.bash",          { link = "@variable" })
+		-- vim.api.nvim_set_hl(0, "@operator.bash",          { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@string.regexp.bash",     { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@variable.builtin.bash",  { link = "@variable" })
 

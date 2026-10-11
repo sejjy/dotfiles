@@ -77,6 +77,7 @@ bindkey "^ " autosuggest-accept
 
 # [ Aliases     ]
 
+alias ...="cd ../.."
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -iv"
