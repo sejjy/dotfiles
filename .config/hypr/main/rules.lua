@@ -27,12 +27,10 @@ hl.window_rule({ match = { class = "qview",                  title = "Open.*" },
 hl.window_rule({ match = { class = "mpv" }, float = true, center = true, size = { 1275, 770 } })
 
 -- OBS Studio
-hl.window_rule({ match = { class = "com.obsproject.Studio", title = "Filters.*" }, float = true, center = true, size = {  810, 520 } })
-hl.window_rule({ match = { class = "com.obsproject.Studio", title = "Settings" },  float = true, center = true, size = { 1120, 760 } })
+hl.window_rule({ match = { class = "obs", title = "Filters.*" }, float = true, center = true, size = {  810, 520 } })
+hl.window_rule({ match = { class = "obs", title = "Select.*" },  float = true, center = true, size = {  880, 570 } })
+hl.window_rule({ match = { class = "obs", title = "Settings" },  float = true, center = true, size = { 1120, 760 } })
 
----- Workarounds
--- Float "raylib" windows
-hl.window_rule({ match = { class = "", title = "raylib" }, float = true, center = true })
 -- https://github.com/kovidgoyal/kitty/issues/10442
 hl.window_rule({ match = { class = "kitty" }, fullscreen_state = "0 0" })
 
