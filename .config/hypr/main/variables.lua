@@ -106,3 +106,9 @@ hl.config({
 		no_donation_nag = true,
 	},
 })
+
+hl.config({
+	binds = {
+		scroll_event_delay = 0,
+	},
+})

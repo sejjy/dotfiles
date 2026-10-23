@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# Glass magnifier zoom for Hyprland v0.55+
+#
+# Usage:
+#     zoom [value]
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    October 24, 2026
+# License: MIT
+
+MIN=1.0
+# MAX=3.0
+
+zoom() {
+	local factor=$1
+
+	hyprctl eval "hl.config({ cursor = { zoom_factor = $factor } })"
+}
+
+main() {
+	local value=$1
+	# [+-]?         An optional sign
+	# [0-9]+        One or more digits
+	# (\.[0-9]+)?   An optional decimal point followed by one or more digits
+	if ! [[ $value =~ ^[+-]?[0-9]+(\.[0-9]+)?$ ]]; then
+		zoom "$MIN"
+		return 1  # Fail silently
+	fi
+
+	local current
+	current=$(hyprctl getoption cursor:zoom_factor | awk '/^float/ {print $2}')
+
+	local factor
+	factor=$(awk -v   v="$value"   \
+	             -v   c="$current" \
+	             -v min="$MIN"     \
+	             'BEGIN {
+	             	f = c + v
+	             	if (f < min) f = min
+	             	print f
+	             }')
+	# factor=$(awk -v   v="$value"   \
+	#              -v   c="$current" \
+	#              -v min="$MIN"     \
+	#              -v max="$MAX"     \
+	#              'BEGIN {
+	#              	f = c + v
+	#              	if (f < min) f = min
+	#              	if (f > max) f = max
+	#              	print f
+	#              }')
+
+	zoom "$factor"
+}
+
+main "$@"

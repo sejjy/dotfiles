@@ -59,10 +59,10 @@ hl.bind(super .. " + Print",    hl.dsp.exec_cmd(scripts .. "screenshot screen"),
 hl.bind(super .. " + CTRL + P", hl.dsp.exec_cmd(scripts .. "screenshot screen"), { locked = true })
 hl.bind(super .. " + ALT + P",  hl.dsp.exec_cmd(scripts .. "screenshot active"), { locked = true })
 
--- TODO: update
 -- Zoom
--- hl.bind(super .. " + SHIFT + mouse:272", hl.dsp.exec_cmd(scripts .. "zoom 0.5"))
--- hl.bind(super .. " + SHIFT + mouse:273", hl.dsp.exec_cmd(scripts .. "zoom reset"))
+hl.bind(super .. " + SHIFT + mouse_up",   hl.dsp.exec_cmd(scripts .. "zoom  0.5"))
+hl.bind(super .. " + SHIFT + mouse_down", hl.dsp.exec_cmd(scripts .. "zoom -0.5"))
+hl.bind(super .. " + SHIFT + mouse:273",  hl.dsp.exec_cmd(scripts .. "zoom reset"))
 
 ----         ----
 --   Windows   --
