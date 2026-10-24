@@ -62,6 +62,7 @@ hl.bind(super .. " + ALT + P",  hl.dsp.exec_cmd(scripts .. "screenshot active"),
 -- Zoom
 hl.bind(super .. " + SHIFT + mouse_up",   hl.dsp.exec_cmd(scripts .. "zoom  0.5"))
 hl.bind(super .. " + SHIFT + mouse_down", hl.dsp.exec_cmd(scripts .. "zoom -0.5"))
+hl.bind(super .. " + SHIFT + mouse:272",  hl.dsp.exec_cmd(scripts .. "zoom  0.5"), { repeating = true })
 hl.bind(super .. " + SHIFT + mouse:273",  hl.dsp.exec_cmd(scripts .. "zoom reset"))
 
 ----         ----
