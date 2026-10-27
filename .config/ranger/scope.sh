@@ -138,10 +138,10 @@ handle_image() {
 	local mimetype="${1}"
 	case "${mimetype}" in
 		## SVG
-		# image/svg+xml|image/svg)
-		# 	convert -- "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
-		# 	exit 1
-		# 	;;
+		image/svg+xml|image/svg)
+			convert -- "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
+			exit 1
+			;;
 
 		## DjVu
 		# image/vnd.djvu)
@@ -196,24 +196,24 @@ handle_image() {
 		# 	;;
 
 		## Font
-		application/font*|application/*opentype)
-			preview_png="/tmp/$(basename "${IMAGE_CACHE_PATH%.*}").png"
-			if fontimage -o "${preview_png}" \
-				--pixelsize "120" \
-				--fontname \
-				--pixelsize "80" \
-				--text "  ABCDEFGHIJKLMNOPQRSTUVWXYZ  " \
-				--text "  abcdefghijklmnopqrstuvwxyz  " \
-				--text "  0123456789.:,;(*!?') ff fl fi ffi ffl  " \
-				--text "  The quick brown fox jumps over the lazy dog.  " \
-				"${FILE_PATH}"; then
-				convert -- "${preview_png}" "${IMAGE_CACHE_PATH}" &&
-					rm "${preview_png}" &&
-					exit 6
-			else
-				exit 1
-			fi
-			;;
+		# application/font*|application/*opentype)
+		# 	preview_png="/tmp/$(basename "${IMAGE_CACHE_PATH%.*}").png"
+		# 	if fontimage -o "${preview_png}" \
+		# 		--pixelsize "120" \
+		# 		--fontname \
+		# 		--pixelsize "80" \
+		# 		--text "  ABCDEFGHIJKLMNOPQRSTUVWXYZ  " \
+		# 		--text "  abcdefghijklmnopqrstuvwxyz  " \
+		# 		--text "  0123456789.:,;(*!?') ff fl fi ffi ffl  " \
+		# 		--text "  The quick brown fox jumps over the lazy dog.  " \
+		# 		"${FILE_PATH}"; then
+		# 		convert -- "${preview_png}" "${IMAGE_CACHE_PATH}" &&
+		# 			rm "${preview_png}" &&
+		# 			exit 6
+		# 	else
+		# 		exit 1
+		# 	fi
+		# 	;;
 
 		## Preview archives using the first image inside.
 		## (Very useful for comic book collections for example.)

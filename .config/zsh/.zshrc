@@ -43,6 +43,8 @@ SAVEHIST=5000
 # [ Environment ]
 
 export PATH="$HOME/.local/bin:$PATH"
+export JAVA_HOME="/usr/lib/jvm/java-25-openjdk"
+export PATH="$JAVA_HOME/bin:$PATH"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
@@ -96,6 +98,7 @@ alias gl="git log --graph"
 alias glo="gl --oneline"
 alias gs="git status"
 alias e="nvim"
+alias time="/usr/bin/time"
 
 # [ Functions   ]
 

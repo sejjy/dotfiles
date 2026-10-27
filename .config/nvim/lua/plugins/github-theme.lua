@@ -21,6 +21,7 @@ return {
 		vim.api.nvim_set_hl(0, "@variable.builtin.bash",  { link = "@variable" })
 
 		-- C
+		vim.g.c_syntax_for_h = 1
 		vim.api.nvim_set_hl(0, "@boolean.c",           { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@character.c",         { link = "@number.c" })
 		vim.api.nvim_set_hl(0, "@constant.macro.c",    { link = "@number.c" })
@@ -30,6 +31,16 @@ return {
 		vim.api.nvim_set_hl(0, "@operator.c",          { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@string.escape.c",     { bold = false })
 		vim.api.nvim_set_hl(0, "@type.builtin.c",      { link = "@variable" })
+
+		-- Java
+		vim.api.nvim_set_hl(0, "@keyword.conditional.ternary.java", { link = "@variable" })
+		vim.api.nvim_set_hl(0, "@keyword.exception.java",           { link = "@keyword.conditional.java" })
+		vim.api.nvim_set_hl(0, "@lsp.type.class.java",              { link = "@variable" })
+		vim.api.nvim_set_hl(0, "@operator.java",                    { link = "@variable" })
+		vim.api.nvim_set_hl(0, "@type.builtin.java",                { link = "@variable" })
+		vim.api.nvim_set_hl(0, "@type.java",                        { link = "@variable" })
+		vim.api.nvim_set_hl(0, "@variable.builtin.java",            { link = "@variable" })
+		vim.api.nvim_set_hl(0, "@variable.member.java",             { link = "@variable" })
 
 		-- Markdown
 		vim.api.nvim_set_hl(0, "@markup.raw", { italic = false })
