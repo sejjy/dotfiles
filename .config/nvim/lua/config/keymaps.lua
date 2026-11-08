@@ -16,8 +16,8 @@ vim.keymap.set("n", "<C-S-l>", "<C-w>>")
 vim.keymap.set("v", "J", ":move '>+1<Enter>gv=gv")
 vim.keymap.set("v", "K", ":move '<-2<Enter>gv=gv")
 
-vim.keymap.set("n", "<Enter>",   "o<Esc>")
-vim.keymap.set("n", "<S-Enter>", "O<Esc>")
+-- vim.keymap.set("n", "<Enter>",   "o<Esc>")
+-- vim.keymap.set("n", "<S-Enter>", "O<Esc>")
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<Leader>=", "mzgg=G`z", { desc = "Indent buffer" })
@@ -29,5 +29,7 @@ vim.keymap.set({ "x"      }, "<Leader>p", [["_dP]], { noremap = true })
 
 vim.keymap.set("n", "<Esc>", ":nohlsearch<Enter>", { silent = true })
 vim.keymap.set("n", "<Leader>ts", ":set spell!<Enter>", { silent = true, desc = "Toggle spell check" })
-
 vim.keymap.set("n", "<Leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Rename" })
+
+vim.keymap.set("n", "<Leader>b", ":!zen-browser %<Enter>", { silent = true })
+vim.keymap.set("n", "<Leader>np", ":!npx prettier --write %<Enter>", { silent = true })
