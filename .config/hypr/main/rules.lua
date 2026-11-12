@@ -9,10 +9,10 @@
 hl.window_rule({ match = { class = "hyprland-share-picker" }, float = true, center = true, size = { 760, 435 } })
 
 -- GTK
-hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "File.*" },    float = true, center = true, size = { 880, 570 } })
-hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "Open.*" },    float = true, center = true, size = { 880, 570 } })
-hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "Save As.*" }, float = true, center = true, size = { 880, 570 } })
-hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "Select.*" },  float = true, center = true, size = { 880, 570 } })
+hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "File.*" },   float = true, center = true, size = { 880, 570 } })
+hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "Open.*" },   float = true, center = true, size = { 880, 570 } })
+hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "Save.*" },   float = true, center = true, size = { 880, 570 } })
+hl.window_rule({ match = { class = "xdg-desktop-portal-gtk", title = "Select.*" }, float = true, center = true, size = { 880, 570 } })
 
 -- Nautilus
 hl.window_rule({ match = { class = "org.gnome.Nautilus" }, float = true, center = true, size = { 980, 640 } })
