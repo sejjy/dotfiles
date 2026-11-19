@@ -39,6 +39,7 @@ return {
 		vim.api.nvim_set_hl(0, "@keyword.exception.java",           { link = "@keyword.conditional.java" })
 		vim.api.nvim_set_hl(0, "@lsp.type.class.java",              { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@operator.java",                    { link = "@variable" })
+		vim.api.nvim_set_hl(0, "@string.escape.java",               { bold = false })
 		vim.api.nvim_set_hl(0, "@type.builtin.java",                { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@type.java",                        { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@variable.builtin.java",            { link = "@variable" })

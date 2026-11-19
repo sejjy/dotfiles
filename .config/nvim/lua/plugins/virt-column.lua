@@ -5,7 +5,7 @@ return {
 
 	config = function()
 		local function toggle_colorcolumn()
-			vim.wo.colorcolumn = (vim.wo.colorcolumn == "" and "80") or ""
+			vim.wo.colorcolumn = (vim.wo.colorcolumn == "" and "80,100") or ""
 		end
 
 		local group = vim.api.nvim_create_augroup("color-column", { clear = true })
