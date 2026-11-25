@@ -12,6 +12,7 @@ vim.opt.showmode = false
 
 vim.opt.list = true
 vim.opt.listchars = {
+	-- space = "·",
 	lead  = "·",
 	trail = "·",
 	nbsp  = "␣",

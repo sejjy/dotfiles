@@ -27,7 +27,7 @@ return {
 		vim.api.nvim_set_hl(0, "@constant.macro.c",    { link = "@number.c" })
 		-- vim.api.nvim_set_hl(0, "@keyword.operator.c",  { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@lsp.type.class.c",    { link = "@variable" })
-		vim.api.nvim_set_hl(0, "@lsp.type.macro.c",    { link = "@number.c" })
+		vim.api.nvim_set_hl(0, "@lsp.type.macro.c",    {})
 		vim.api.nvim_set_hl(0, "@lsp.type.operator.c", { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@lsp.type.type.c",     { link = "@variable" })
 		vim.api.nvim_set_hl(0, "@operator.c",          { link = "@variable" })
